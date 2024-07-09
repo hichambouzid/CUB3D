@@ -2,12 +2,14 @@ NAME = cub3D
 
 CFLAGS = -Wall -Wextra -Werror -I ./minilibx_mms_20200219 -Imlx_linux -O3
 
-CFILS = 
+CFILS = main.c key_h00k.c
 
 OBJS = $(CFILS:.c=.o)
 
-all: $(OBJS)
-	cc -Lmlx_linux -lmlx_Linux -L./minilibx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+all: $(NAME)
+
+$(NAME):$(OBJS)
+		cc $(OBJS) -Lmlx_linux -lmlx_Linux -L./minilibx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
