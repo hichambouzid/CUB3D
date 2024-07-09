@@ -6,11 +6,21 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/09 12:24:09 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/09 22:39:32 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int ft_strlen(char *str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int  ft_close(int key)
 {
