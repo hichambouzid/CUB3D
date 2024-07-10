@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/09 23:26:00 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:44:24 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void init_window(t_data *data)
 		exit(1);
 	}
 	data->mlx_win = mlx_new_window(data->mlx, 1600, 1000, "CUB3D");
-	
+	data->mlx_img = mlx_new_image(data->mlx, 1600, 1000);
+	get_img_data(data, 1600, 1000);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
 	// mlx_loop(data->mlx);
 }
 
@@ -43,52 +45,45 @@ void init_window(t_data *data)
 	
 // }
 
-void ft_put_pixel(t_data *data, int c)
+void draw_square(t_data *data)
 {
+	int coler;
 	int i;
 	int j;
-	// int coler;
 
-	i = data->y * 30;
-	j = data->x * 30;
-	// coler  = get_coler(c);
-	printf("%d\n", c);
-	while (i < (data->y * 30) + 30)
+	if (data->map[data->x] == '1')
+		coler = 0;
+	else if (data->map[data->x] == '0')
+		coler = 0xFBF7F4;
+	else
+		coler = 0x00808080;
+	j = data->y * 20;
+	while (j < (data->y * 20) + 20)
 	{
-		j = 0;
-		while (j < (data->x * 30) + 30)
+		i = data->x * 20;
+		while (i < (data->x * 20) + 20)
 		{
-			//  if (c == '1')
-				mlx_pixel_put(data->mlx, data->mlx_win, i , j,c);
-			//  if (c == '0')
-			// 	 mlx_pixel_put(data->mlx, data->mlx_win,i, j , 0x00A0A0A0);
-			j++;
+			put_pixel_to_image(data, i, j, coler);
+			i++;
 		}
-		usleep(2000);
-		i++;
+		j++;
 	}
 }
 
 void setup(t_data *data)
 {
-	data->y = 0;
-	while (data->y < 5)
+	 data->y = 0;
+	 while (data->y < 14)
 	{
 		data->x = 0;
-		while (data->x < ft_strlen(data->map[data->y]))
+		while (data->map[data->x] != '\n' && data->map[data->x])
 		{
-			if (data->map[data->y][data->x] == '0')
-			ft_put_pixel(data, 0x00A0A0A0);
-			// else
-			// ft_put_pixel(data, 0x00A0A0A0);
-			
-			data->x++;		
+			draw_square(data);
+			data->x++;
 		}
+		data->map += data->x + 1;
 		data->y++;
 	}
-	// data->x = 0;
-	// data->y = 0;
-	// mlx_loop(data->mlx);
 }
 
 int main(int ac, char **av)
@@ -98,11 +93,9 @@ int main(int ac, char **av)
 	(void)av;
 	int i;
 	i = 0;
-	char *mapp[5] = {"111111",
-					"100101",
-					"101001",
-					"1100N1",
-					"111111"};
+	char *mapp = 
+"       1111111111111111111111111\n       1000000000110000000000001\n       1011000001110000000000001\n       1001000000000000000000001\n111111111011000001110000000000001\n100000000011000001110111111111111\n11110111111111011100000010001\n11110111111111011101010010001\n11000000110101011100000010001\n10000000000000001100000010001\n10000000000000001101010010001\n11000001110101011111011110N0111\n11110111 1110101 101111010001\n11111111 1111111 111111111111";
+
 	data.map = mapp;
 	// (void)mapp;
 	init_window(&data);

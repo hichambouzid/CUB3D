@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/09 22:39:32 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/10 16:31:01 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int key_hook(int key, t_data *data)
 
 void processInput(t_data *data)
 {
-	mlx_hook(data->mlx_win,2, 3,key_hook, data);
+	mlx_hook(data->mlx_win,2, 17,key_hook, data);
 	mlx_hook(data->mlx_win,17, 0,ft_close, NULL);
 
 	mlx_loop(data->mlx);
