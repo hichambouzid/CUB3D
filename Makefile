@@ -1,9 +1,9 @@
 NAME = cub3D
 
-CFLAGS = -Wall -Wextra -Werror -I ./minilibx_mms_20200219 -Imlx_linux -O3
+CFLAGS = -Wall -Wextra -Werror  -I ./minilibx_mms_20200219 -Imlx_linux -O3
 
 #main.c key_h00k.c mlx_img.c
-CFILS = key_h00k.c  main.c  mlx_img.c
+CFILS = key_h00k.c  main.c  mlx_img.c CUB_util_0.c
 
 OBJS = $(CFILS:.c=.o)
 
