@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/11 20:35:37 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/12 21:18:17 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,29 @@ void draw_mini_square(t_data *data)
 	int j;
 	int i;
 
-	j = data->y * 20 + 8;
-	while (j < (data->y * 20) + 14)
+	j = data->z * 20 + 8;
+	while (j < (data->z * 20) + 14)
 	{
-		i = data->x * 20 + 8;
-		while (i < (data->x * 20) + 14)
+		i = data->f * 20 + 8;
+		while (i < (data->f * 20) + 14)
+		{
+			put_pixel_to_image(data,  i, j, 0x00FF0000);
+			i++;
+		}
+		j++;
+	}
+}
+
+int wall_check(t_data *data)
+{
+	int j;
+	int i;
+
+	j = data->z * 20 + 8;
+	while (j < (data->z * 20) + 14)
+	{
+		i = data->f * 20 + 8;
+		while (i < (data->f * 20) + 14)
 		{
 			put_pixel_to_image(data,  i, j, 0x00FF0000);
 			i++;

@@ -13,10 +13,13 @@ typedef struct data
 	void *mlx_win;
 	char **map;
 	void *mlx_img;
+	void *mlx_3D;
     int line_lenght;
     char *str;
 	int x;
 	int y;
+	float f;
+	float z;
 
 } t_data;
 
@@ -39,4 +42,7 @@ int	ft_strleen(char **ptr);
 void ft_putstr_fd(char *str, int fd);
 void get_cordinate(t_data *data);
 void draw_mini_square(t_data *data);
+void render(t_data *data);
+void setup(t_data *data);
+
 #endif

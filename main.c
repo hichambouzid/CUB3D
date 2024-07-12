@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/11 19:43:08 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/12 18:45:52 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void init_window(t_data *data)
 	
 	get_img_data(data, 1600, 1000);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
-	// mlx_loop(data->mlx);
+
 }
 
 int get_coler(char c)
@@ -38,21 +38,21 @@ int get_coler(char c)
 	
 }
 
-void draw_square(t_data *data)
+void draw_square(t_data *data, int f, int z)
 {
 	int coler;
 	int i;
 	int j;
 
-	coler = get_coler(data->map[data->y][data->x]);
-	j = data->y * 20;
-	while (j < (data->y * 20) + 20)
+	coler = get_coler(data->map[f][z]);
+	j = f * 20;
+	while (j < (f * 20) + 20)
 	{
-		i = data->x * 20;
-		while (i < (data->x * 20) + 20)
+		i = z * 20;
+		while (i < (z * 20) + 20)
 		{
 			if (((i % 20 == 0 || j % 20 == 0)
-				&& data->map[data->y][data->x] != ' '))
+				&& data->map[f][z] != ' '))
 				put_pixel_to_image(data, i, j, 0x00808080);
 			else 
 				put_pixel_to_image(data, i, j, coler);
@@ -64,27 +64,35 @@ void draw_square(t_data *data)
 
 void setup(t_data *data)
 {
-	 data->y = 0;
-	 while (data->y < ft_strleen(data->map))
+	int i;
+	int j;
+
+	 i = 0;
+	 while (i < ft_strleen(data->map))
 	{
-		data->x = 0;
-		while (data->map[data->y][data->x])
+		j = 0;
+		while (data->map[i][j])
 		{
-			draw_square(data);
-			data->x++;
+			draw_square(data, i, j);
+			j++;
 		}
-		data->y++;
+		i++;
 	}
 }
 
-void runder(t_data *data)
-{
-	get_cordinate(data);
-	printf("---> %d\n", data->x);
-	printf("-----------%d-----\n", data->y);
-	// put_pixel_to_image(data, data->x * 20 + 10, data->y * 20 + 10 , 0x00FF0000);
-	draw_mini_square(data);
-}
+// void render(t_data *data)
+// {
+// 	// clear windows 
+// 	// distroy image map
+// 	// rander map
+// 	// rander rays 
+// 	// draw player with new possition 
+	
+// 	printf("---> %d\n", data->x);
+// 	printf("-----------%d-----\n", data->y);
+// 	get_cordinate(data);
+// 	draw_mini_square(data);
+// }
 
 int main(int ac, char **av)
 {
@@ -113,14 +121,23 @@ int main(int ac, char **av)
 	// (void)mapp;
 	init_window(&data);
 	setup(&data);
+	// data.x = 0;
+	// data.y = 0;
+	get_cordinate(&data);
+	data.z = data.y;
+	data.f = data.x;
+	printf("%d\n", data.x);
+	printf("%d\n", data.y);
+	render(&data);
 	while (1)
 	{
 		processInput(&data);
 		// printf("===========\n");
 		// mlx_pixel_put(data.mlx, data.mlx_win, 1600 / 2, 1000/ 2,0xFFFFFF);
-		runder(&data);
-		// i++;
 		// Updat();
-	mlx_loop(data.mlx);
+		// render(&data);
+		// i++;
+		// printf("------\n");
+		mlx_loop(data.mlx);
 	}
 }
