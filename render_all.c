@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/12 18:46:07 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:39:42 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void render(t_data *data)
 {
-    // mlx_clear_window(data->mlx, data->mlx_win);
     mlx_destroy_image(data->mlx, data->mlx_img);
     data->mlx_img = mlx_new_image(data->mlx, 1600, 1000);
     get_img_data(data, 1600, 1000);

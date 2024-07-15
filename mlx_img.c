@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/12 16:22:18 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/13 17:11:48 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,22 @@ void  get_img_data(t_data *data, int width, int height)
         *((unsigned int *)data->str + i) = 0x00808080;
         i++;
     }
+}
+
+void allow_render(t_data *data, float *r, float flag)
+{
+    if (flag < 0)
+        *r-= 0.2;
+    else if (flag > 0)
+        *r += 0.2;
+    if (!wall_check(data))
+    {
+        if (flag  < 0)
+            *r += 0.2;
+        else if (flag > 0)
+            *r -= 0.2;
+        return ;
+    }
+    render(data);
+    return ;
 }

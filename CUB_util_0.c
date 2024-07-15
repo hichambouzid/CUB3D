@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/12 21:18:17 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/13 14:52:16 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int wall_check(t_data *data)
 {
 	int j;
 	int i;
+	char *tmp;
 
 	j = data->z * 20 + 8;
 	while (j < (data->z * 20) + 14)
@@ -97,9 +98,15 @@ int wall_check(t_data *data)
 		i = data->f * 20 + 8;
 		while (i < (data->f * 20) + 14)
 		{
-			put_pixel_to_image(data,  i, j, 0x00FF0000);
+			tmp = data->str + (j * data->line_lenght + 4 * i);
+			if (*(unsigned int *)tmp == 0)
+			{
+				printf("hee hee ]\n");
+				return (0);
+			}
 			i++;
 		}
 		j++;
 	}
+	return (1);
 }

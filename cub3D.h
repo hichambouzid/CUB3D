@@ -6,7 +6,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <math.h>
 
+#define FOV 60
 typedef struct data
 {
 	void *mlx;
@@ -20,7 +22,7 @@ typedef struct data
 	int y;
 	float f;
 	float z;
-
+	float angle;
 } t_data;
 
 typedef struct info
@@ -44,5 +46,7 @@ void get_cordinate(t_data *data);
 void draw_mini_square(t_data *data);
 void render(t_data *data);
 void setup(t_data *data);
+int wall_check(t_data *data);
+void allow_render(t_data *data, float *r, float flag);
 
 #endif
