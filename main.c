@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/13 17:12:52 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:48:11 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,14 +117,15 @@ int main(int ac, char **av)
 "11110111 1110101 101111010001",
 "11111111 1111111 111111111111",
 	NULL};
-	// printf("%d\n", M_PI);
 	data.map = mapp;
+	get_cordinate(&data);
+	data.rotationAngle = get_pi_Angle(data.map[data.y][data.x]);
 	// (void)mapp;
 	init_window(&data);
 	setup(&data);
 	// data.x = 0;
 	// data.y = 0;
-	get_cordinate(&data);
+	// get_cordinate(&data);
 	data.z = data.y;
 	data.f = data.x;
 	printf("%d\n", data.x);

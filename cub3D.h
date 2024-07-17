@@ -16,6 +16,7 @@ typedef struct data
 	char **map;
 	void *mlx_img;
 	void *mlx_3D;
+	float rotationAngle;
     int line_lenght;
     char *str;
 	int x;
@@ -48,5 +49,6 @@ void render(t_data *data);
 void setup(t_data *data);
 int wall_check(t_data *data);
 void allow_render(t_data *data, float *r, float flag);
+float get_pi_Angle(char c);
 
 #endif

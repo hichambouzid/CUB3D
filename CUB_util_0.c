@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/13 14:52:16 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:47:49 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void get_cordinate(t_data *data)
 	i = 0;
 	while (data->map[i])
 	{
+				printf("-----------\n");
 		j = 0;
 		while (data->map[i][j])
 		{
-			if (data->map[i][j] == 'N')
+			if (data->map[i][j] == 'N' || data->map[i][j]  == 'E' ||
+			data->map[i][j] == 'W' || data->map[i][j] == 'S')
 			{
 				data->x = j;
 				data->y = i;

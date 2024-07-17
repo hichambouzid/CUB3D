@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/13 15:48:15 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 13:49:41 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,22 @@ int key_hook(int key, t_data *data)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		exit(1);
 	}
-	if (key == 65363)
+	if (key == 100)
 		allow_render(data, &data->f, 1);
-	if (key == 65361)
+	if (key == 97)
 		allow_render(data, &data->f, -1);
-	if (key == 65362)
+	if (key == 119)
 		allow_render(data, &data->z, -1);
-	if (key == 65364)
+	if (key == 115)
 		allow_render(data, &data->z, 1);
+	if (key == 65361)
+	{
+		// todo : move to left
+	}
+	if (key == 65363)
+	{
+		// todo : move to right
+	}
 	if (key == 65362)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
