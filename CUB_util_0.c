@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 13:47:49 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:29:20 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,15 @@ void draw_mini_square(t_data *data)
 	int j;
 	int i;
 
+	// data->z += sin(data->rotationAngle);
+	// data->y -= cos(data->rotationAngle); 
 	j = data->z * 20 + 8;
 	while (j < (data->z * 20) + 14)
 	{
 		i = data->f * 20 + 8;
 		while (i < (data->f * 20) + 14)
 		{
-			put_pixel_to_image(data,  i, j, 0x00FF0000);
+			put_pixel_to_image(data,  i , j, 0x00FF0000);
 			i++;
 		}
 		j++;

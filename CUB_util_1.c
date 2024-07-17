@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 13:44:36 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:31:24 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,21 @@ float get_pi_Angle(char c)
     if (c == 'W')
     return (M_PI);
         return (2 * M_PI);
+}
+
+void change_angle(float *angle, int flag)
+{
+    if (flag == 1)
+    {
+        *angle += 4 * (M_PI / 180);
+        if (*angle > 2 * M_PI)
+            *angle = 0;
+    }
+    else
+    {
+        *angle -= 4 * (M_PI / 180);
+        if (*angle < 0)
+            *angle = 2 * M_PI;
+    }
+    
 }

@@ -50,5 +50,6 @@ void setup(t_data *data);
 int wall_check(t_data *data);
 void allow_render(t_data *data, float *r, float flag);
 float get_pi_Angle(char c);
+void change_angle(float *angle, int flag);
 
 #endif

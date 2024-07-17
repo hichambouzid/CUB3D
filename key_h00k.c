@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 13:49:41 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:10:55 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ int key_hook(int key, t_data *data)
 		allow_render(data, &data->z, 1);
 	if (key == 65361)
 	{
+		change_angle(&data->rotationAngle, -1);
 		// todo : move to left
+		render(data);
 	}
 	if (key == 65363)
 	{
+		change_angle(&data->rotationAngle, 1);
+		render(data);
 		// todo : move to right
 	}
 	if (key == 65362)
