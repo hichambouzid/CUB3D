@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 17:10:55 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:37:33 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,30 @@ int key_hook(int key, t_data *data)
 		exit(1);
 	}
 	if (key == 100)
+	{
+		data->z += sin(data->rotationAngle + M_PI_2) * 0.25;
+		data->f += cos(data->rotationAngle + M_PI_2) * 0.25;
 		allow_render(data, &data->f, 1);
+	}
 	if (key == 97)
+	{
+		data->z += sin(data->rotationAngle - M_PI_2) * 0.25;
+		data->f += cos(data->rotationAngle - M_PI_2) * 0.25;
 		allow_render(data, &data->f, -1);
+	}
 	if (key == 119)
+	{
+		data->z += sin(data->rotationAngle) * 0.25;
+		data->f += cos(data->rotationAngle) * 0.25;
 		allow_render(data, &data->z, -1);
+		// render(data);
+	}
 	if (key == 115)
+	{
+		data->z += -sin(data->rotationAngle) * 0.25;
+		data->f += -cos(data->rotationAngle) * 0.25;
 		allow_render(data, &data->z, 1);
+	}
 	if (key == 65361)
 	{
 		change_angle(&data->rotationAngle, -1);

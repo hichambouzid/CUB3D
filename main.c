@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 13:48:11 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/18 15:46:18 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int main(int ac, char **av)
 "        1011000001110000000000001",
 "        1001000000000000000000001",
 "111111111011000001110000000000001",
-"100000000011000001110111111111111",
+"100000000011000001110111011111111",
 "11110111111111011100000010001",
 "11110111111111011101010010001",
 "11000000110101011100000010001",
@@ -120,26 +120,17 @@ int main(int ac, char **av)
 	data.map = mapp;
 	get_cordinate(&data);
 	data.rotationAngle = get_pi_Angle(data.map[data.y][data.x]);
-	// (void)mapp;
 	init_window(&data);
 	setup(&data);
-	// data.x = 0;
-	// data.y = 0;
-	// get_cordinate(&data);
 	data.z = data.y;
 	data.f = data.x;
-	printf("%d\n", data.x);
-	printf("%d\n", data.y);
+	// printf("%d\n", data.x);
+	// printf("%d\n", data.y);
 	render(&data);
 	while (1)
 	{
 		processInput(&data);
-		// printf("===========\n");
-		// mlx_pixel_put(data.mlx, data.mlx_win, 1600 / 2, 1000/ 2,0xFFFFFF);
-		// Updat();
-		// render(&data);
-		// i++;
-		// printf("------\n");
+
 		mlx_loop(data.mlx);
 	}
 }

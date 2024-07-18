@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 13:23:57 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:46:19 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void render(t_data *data)
     //     get_cordinate(data);
     // }
     draw_mini_square(data);
-    printf("data->x %d\n", data->x);
-    printf("data->y %d\n", data->y);
+    // printf("data->x %d\n", data->x);
+    // printf("data->y %d\n", data->y);
     int i = 0;
     
     float a_tmp = 11 + (data->f * 20);
