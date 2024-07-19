@@ -9,6 +9,20 @@
 #include <math.h>
 
 #define FOV 60
+// #define up 119	
+// #define down 115
+// #define left 97
+// #define right 100
+
+typedef enum UPCODE{
+	left,
+	right,
+	up,
+	down,
+	t_left,
+	t_right
+} t_upcode;
+
 typedef struct data
 {
 	void *mlx;
@@ -47,8 +61,8 @@ void get_cordinate(t_data *data);
 void draw_mini_square(t_data *data);
 void render(t_data *data);
 void setup(t_data *data);
-int wall_check(t_data *data);
-void allow_render(t_data *data, float *r, float flag);
+int wall_check(t_data *data,float z, float f);
+void allow_render(t_data *data, int key);
 float get_pi_Angle(char c);
 void change_angle(float *angle, int flag);
 

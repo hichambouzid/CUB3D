@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/17 17:31:24 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:41:17 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void change_angle(float *angle, int flag)
 {
     if (flag == 1)
     {
-        *angle += 4 * (M_PI / 180);
+        *angle += 5 * (M_PI / 180);
         if (*angle > 2 * M_PI)
             *angle = 0;
     }

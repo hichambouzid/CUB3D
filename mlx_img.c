@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/18 15:57:25 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:05:50 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,41 @@ void  get_img_data(t_data *data, int width, int height)
         i++;
     }
 }
-
-void allow_render(t_data *data, float *r, float flag)
+void change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
-    // if (flag < 0)
-    //     *r-= 0.25;
-    // else if (flag > 0)
-    //     *r += 0.25;
-    if (!wall_check(data))
+    if (key == 97)
     {
-        if (flag  < 0)
-            *r += 0.25;
-        else if (flag > 0)
-            *r -= 0.25;
-        return ;
+        *tmp_x = cos(data->rotationAngle - M_PI_2) * 0.25;
+        *tmp_y = sin(data->rotationAngle - M_PI_2) * 0.25;
     }
+    else if (key == 100)
+    {
+        *tmp_x = cos(data->rotationAngle + M_PI_2) * 0.25;
+        *tmp_y = sin(data->rotationAngle + M_PI_2) * 0.25;
+    }
+    else if (key == 119)  
+    {
+        *tmp_x = cos(data->rotationAngle) * 0.25;
+        *tmp_y = sin(data->rotationAngle) * 0.25;
+    } 
+    else if (key == 115) 
+    {
+        *tmp_x = -cos(data->rotationAngle) * 0.25;
+        *tmp_y = -sin(data->rotationAngle) * 0.25;   
+    }
+    return ;
+}
+
+void allow_render(t_data *data, int key)
+{
+    float tmp_x;
+    float tmp_y;
+    
+    change_cordinate(data, key, &tmp_x, &tmp_y);
+  if (!wall_check(data, tmp_y + data->z, tmp_x + data->f))
+        return ;
+    data->z += tmp_y;
+    data->f += tmp_x;
     render(data);
     return ;
 }

@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/18 17:37:33 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:07:27 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,19 @@ int key_hook(int key, t_data *data)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		exit(1);
 	}
-	if (key == 100)
-	{
-		data->z += sin(data->rotationAngle + M_PI_2) * 0.25;
-		data->f += cos(data->rotationAngle + M_PI_2) * 0.25;
-		allow_render(data, &data->f, 1);
-	}
-	if (key == 97)
-	{
-		data->z += sin(data->rotationAngle - M_PI_2) * 0.25;
-		data->f += cos(data->rotationAngle - M_PI_2) * 0.25;
-		allow_render(data, &data->f, -1);
-	}
-	if (key == 119)
-	{
-		data->z += sin(data->rotationAngle) * 0.25;
-		data->f += cos(data->rotationAngle) * 0.25;
-		allow_render(data, &data->z, -1);
-		// render(data);
-	}
-	if (key == 115)
-	{
-		data->z += -sin(data->rotationAngle) * 0.25;
-		data->f += -cos(data->rotationAngle) * 0.25;
-		allow_render(data, &data->z, 1);
-	}
-	if (key == 65361)
+	if (key == 97 || key == 100 || key == 119 || key == 115)
+		allow_render(data, key);
+	else if (key == 65361)
 	{
 		change_angle(&data->rotationAngle, -1);
-		// todo : move to left
 		render(data);
 	}
-	if (key == 65363)
+	else if (key == 65363)
 	{
 		change_angle(&data->rotationAngle, 1);
 		render(data);
-		// todo : move to right
 	}
-	if (key == 65362)
+	else if (key == 65362)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
 	}
