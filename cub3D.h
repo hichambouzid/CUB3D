@@ -51,7 +51,7 @@ typedef struct info
 void init_window(t_data *data);
 int  ft_close(int key);
 int key_hook(int key, t_data *data);
-void processInput(t_data *data);
+int processInput(t_data *data);
 int ft_strlen(char *str);
 void  get_img_data(t_data *data, int width, int height);
 void put_pixel_to_image(t_data *data, int x, int y, int coler);

@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/20 12:00:03 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:37:54 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void draw_square(t_data *data, int f, int z)
 
 	coler = get_coler(data->map[f][z]);
 	j = f * 20;
-	while (j < (f * 20) + 20)
+	while (j  <= (f * 20) + 20)
 	{
 		i = z * 20;
 		while (i < (z * 20) + 20)
@@ -107,8 +107,8 @@ int main(int ac, char **av)
 "        1011000001110000000000001",
 "        1001000000000000000000001",
 "111111111011000001110000000000001",
-"100000000011000001110111011111111",
-"11110111111111011100000000001",
+"100000000011000001110011011111111",
+"11110111111111011100010000001",
 "111101111111110111010100W0001",
 "11000000110101011100000000001",
 "10000000000000001100000000001",
@@ -125,12 +125,12 @@ int main(int ac, char **av)
 	data.z = data.y;
 	data.f = data.x;
 	// printf("%d\n", data.x);
-	// printf("%d\n", data.y);
+	printf("%d\n", data.y);
 	render(&data);
 	while (1)
 	{
 		processInput(&data);
-
+		// mlx_loop_hook(data.mlx, &processInput, (void *)&data);
 		mlx_loop(data.mlx);
 	}
 }

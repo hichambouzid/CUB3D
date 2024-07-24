@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/20 11:53:28 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:11:10 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 int check_coler(t_data *data, int x, int y)
 {
     char *tmp;
+    char *tmp1;
 
     tmp = data->str + ((y * data->line_lenght + 4 * x));
-    if (*(unsigned int *)tmp == 0)
+    tmp1 = data->str + ((y + 1) * data->line_lenght + 4 * (x  + 1));
+    if (*(unsigned int *)tmp <= 0)
         return (0);
     return (1);
 }
@@ -30,6 +32,14 @@ void render_line(t_data *data, float Angle)
     {
         if (!check_coler(data, a_tmp, b_tmp))
             break ;
+        if (!check_coler(data, a_tmp + 1, b_tmp + 1))
+           break ;
+        if (!check_coler(data, a_tmp - 1, b_tmp - 1))
+           break ;
+        if (!check_coler(data, a_tmp + 1, b_tmp - 1))
+           break ;
+        if (!check_coler(data, a_tmp - 1, b_tmp + 1))
+                    break ;
         put_pixel_to_image(data,a_tmp, b_tmp, 0x00FF0000);
         b_tmp += sin(Angle);
         a_tmp +=  cos(Angle);

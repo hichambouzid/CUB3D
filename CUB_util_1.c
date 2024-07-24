@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/20 12:22:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:11:55 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ void draw_fov(t_data *data)
     
     i = data->rotationAngle;
     tmp = ((30 * M_PI) / 180) + i;
-    while (i < tmp)
-    {
-        render_line(data, i);
-        i += 0.001;
-    }
-    tmp = data->rotationAngle - ((30 * M_PI) / 180);
-    while (tmp <= data->rotationAngle)
+    while (tmp > data->rotationAngle - ((30 * M_PI) / 180))
     {
         render_line(data, tmp);
-        tmp += 0.001;
+        tmp -= 0.001;
     }
+    // tmp = data->rotationAngle - ((30 * M_PI) / 180);
+    // while (tmp < data->rotationAngle)
+    // {
+    //     render_line(data, tmp);
+    //     tmp += 0.001;
+    // }
     // render(data);
 }
