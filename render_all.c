@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/23 17:11:10 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:35:58 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int check_coler(t_data *data, int x, int y)
 {
     char *tmp;
-    char *tmp1;
 
     tmp = data->str + ((y * data->line_lenght + 4 * x));
-    tmp1 = data->str + ((y + 1) * data->line_lenght + 4 * (x  + 1));
     if (*(unsigned int *)tmp <= 0)
         return (0);
     return (1);

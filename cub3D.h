@@ -48,6 +48,12 @@ typedef struct info
 	
 }t_info;
 
+typedef struct collector
+{
+	int count;
+	void *garbage[10000];
+} t_collector;
+
 void init_window(t_data *data);
 int  ft_close(int key);
 int key_hook(int key, t_data *data);
@@ -68,5 +74,7 @@ void change_angle(float *angle, int flag);
 int check_coler(t_data *data, int x, int y);
 void render_line(t_data *data, float Angle);
 void draw_fov(t_data *data);
+void *ft_calloc(size_t count, size_t size);
+void ft_free(t_collector *collector);
 
 #endif
