@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/25 17:03:33 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/25 20:11:41 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int main(int ac, char **av)
 	NULL};
 	data.map = mapp;
 	get_cordinate(&data);
+	data.projection_plan = tan(30 * M_PI / 180) * (WIDTH / 2);
 	data.rotationAngle = get_pi_Angle(data.map[data.y][data.x]);
 	data.flag = 0;
 	init_window(&data);

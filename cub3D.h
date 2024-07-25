@@ -9,6 +9,7 @@
 #include <math.h>
 
 #define FOV 60
+#define CUB_SIZE 64
 // #define up 119	
 // #define down 115
 // #define left 97
@@ -42,6 +43,7 @@ typedef struct data
 	float f;
 	float z;
 	float angle;
+	float projection_plan;
 	int flag;
 	void *mlx_tmp;
 } t_data;
