@@ -13,6 +13,8 @@
 // #define down 115
 // #define left 97
 // #define right 100
+#define WIDTH 1600
+#define HEIGHT 900 
 
 typedef enum UPCODE{
 	left,
@@ -33,11 +35,15 @@ typedef struct data
 	float rotationAngle;
     int line_lenght;
     char *str;
+	char *str1;
+	char *tmp_str;
 	int x;
 	int y;
 	float f;
 	float z;
 	float angle;
+	int flag;
+	void *mlx_tmp;
 } t_data;
 
 typedef struct info
@@ -72,7 +78,7 @@ void allow_render(t_data *data, int key);
 float get_pi_Angle(char c);
 void change_angle(float *angle, int flag);
 int check_coler(t_data *data, int x, int y);
-void render_line(t_data *data, float Angle);
+float render_line(t_data *data, float Angle);
 void draw_fov(t_data *data);
 void *ft_calloc(size_t count, size_t size);
 void ft_free(t_collector *collector);

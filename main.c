@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/24 14:35:21 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:03:33 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ void init_window(t_data *data)
 		ft_putstr_fd("error: canno't initializ windows\n", 2);
 		exit(1);
 	}
-	data->mlx_win = mlx_new_window(data->mlx, 1600, 1000, "CUB3D");
-	data->mlx_img = mlx_new_image(data->mlx, 1600, 1000);
-	
-	get_img_data(data, 1600, 1000);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
-
+	data->mlx_win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
+	data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (data->flag)
+		data->mlx_tmp = data->mlx_img;
+	else
+		data->mlx_tmp = data->mlx_3D;
+	get_img_data(data, WIDTH, HEIGHT);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_tmp, 0, 0);
 }
 
 int get_coler(char c)
@@ -109,7 +112,7 @@ int main(int ac, char **av)
 "111111111011000001110000000000001",
 "100000000011000001110011011111111",
 "11110111111111011100010000001",
-"111101111111110111010100W0001",
+"111101111111110111010100N0001",
 "11000000110101011100000000001",
 "10000000000000001100000000001",
 "10000000000000000001010000001",
@@ -120,11 +123,11 @@ int main(int ac, char **av)
 	data.map = mapp;
 	get_cordinate(&data);
 	data.rotationAngle = get_pi_Angle(data.map[data.y][data.x]);
+	data.flag = 0;
 	init_window(&data);
 	setup(&data);
 	data.z = data.y;
 	data.f = data.x;
-	// printf("%d\n", data.x);
 	printf("%d\n", data.y);
 	render(&data);
 	while (1)

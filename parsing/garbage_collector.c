@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_collector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:10:24 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/24 15:30:05 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:48:59 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../cub3D.h"
-#include <stdlib.h>
+#include "../cub3D.h"
+// #include <stdlib.h>
 
-typedef struct collector
-{
-	int count;
-	void *garbage[10000];
-} t_collector;
+// typedef struct collector
+// {
+// 	int count;
+// 	void *garbage[10000];
+// } t_collector;
 
 void *ft_calloc(size_t count, size_t size, t_collector *collector)
 {

@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/19 19:08:42 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:02:49 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void get_cordinate(t_data *data)
 	i = 0;
 	while (data->map[i])
 	{
-				printf("-----------\n");
+				// printf("-----------\n");
 		j = 0;
 		while (data->map[i][j])
 		{

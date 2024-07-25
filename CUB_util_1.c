@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/23 17:11:55 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:17:59 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,18 @@ void change_angle(float *angle, int flag)
 void draw_fov(t_data *data)
 {
     float tmp;
-    float i;
+    float dstn;
     
-    i = data->rotationAngle;
-    tmp = ((30 * M_PI) / 180) + i;
+    int f;
+    f = 0;
+    tmp = ((30 * M_PI) / 180) + data->rotationAngle;
     while (tmp > data->rotationAngle - ((30 * M_PI) / 180))
     {
-        render_line(data, tmp);
+        dstn = render_line(data, tmp);
         tmp -= 0.001;
+        f++;
     }
+    printf("=======================>%d\n", f);
     // tmp = data->rotationAngle - ((30 * M_PI) / 180);
     // while (tmp < data->rotationAngle)
     // {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/24 14:35:58 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/25 16:59:15 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ int check_coler(t_data *data, int x, int y)
     return (1);
 }
 
-void render_line(t_data *data, float Angle)
+float render_line(t_data *data, float Angle)
 {
     float a_tmp = 11 + (data->f * 20);
     float b_tmp = 11 + (data->z * 20);
+
+    float save_a = 11 + (data->f * 20);
+    float save_b = 11 + (data->z * 20);
+
     while (1)
     {
         if (!check_coler(data, a_tmp, b_tmp))
@@ -42,20 +46,32 @@ void render_line(t_data *data, float Angle)
         b_tmp += sin(Angle);
         a_tmp +=  cos(Angle);
     }
-
+    return (sqrt(pow((a_tmp * data->f / save_a) - data->f, 2)+
+    pow((b_tmp * data->z / save_b) - data->z, 2)));
     
 }
 void render(t_data *data)
 {
     mlx_destroy_image(data->mlx, data->mlx_img);
-    data->mlx_img = mlx_new_image(data->mlx, 1600, 1000);
-    get_img_data(data, 1600, 1000);
-    mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
+    mlx_destroy_image(data->mlx, data->mlx_3D);
+    data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (data->flag != 0)
+		data->mlx_tmp = data->mlx_img;
+	else
+		data->mlx_tmp = data->mlx_3D;        
+	get_img_data(data, WIDTH, HEIGHT);
+    // data->mlx_tmp = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+    // get_img_data(data, WIDTH, HEIGHT);
+    // mlx_put_image_to_window(data->mlx, data->mlx_win, data->tmp, 0, 0);
     setup(data);
     draw_mini_square(data);
     // int i = 0;
     // render_line(data, data->rotationAngle);
     draw_fov(data);
+    // printf("data->f====%f\n", data->f);
+    // printf("data->z====%f\n", data->z);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_tmp, 0, 0);
     // float a_tmp = 11 + (data->f * 20);
     // float b_tmp = 11 + (data->z * 20);
     // while (1)
