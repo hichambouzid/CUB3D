@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/25 20:37:15 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/28 19:06:49 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,25 +62,51 @@ void put_pixel_to_image1(t_data *data, int x, int y, int coler)
 void draw_ceiling(t_data *data, float end_y, float x)
 {
     float start_y;
-    
+    (void)end_y;
     start_y = 0;
-    while (start_y < end_y)
+    while (start_y < HEIGHT / 2)
     {
         put_pixel_to_image1(data,  x, start_y, 0x00FF0000);
-        end_y++;
+        start_y++;
+    }    
+}
+
+void draw_walls(t_data *data, float height_wall, float x)
+{
+    float start_y;
+    float end_y;
+    int i = 0;
+    // start_y = height_wall / 2;
+    // end = ((HEIGHT - height_wall) / 2);
+    
+    if (height_wall >= HEIGHT)
+    {
+        start_y = 0;
+        end_y = HEIGHT;
+    }
+    else
+    {
+        start_y = (HEIGHT - height_wall) / 2;
+        end_y = height_wall;
+    }
+    while (i < end_y)
+    {
+        put_pixel_to_image1(data,  x, start_y, 0);
+        start_y++;
+        i++;
     }    
 }
 
 void draw_fake_3D(t_data *data, float hit, float x)
 {
-    float end_y;
+    // float end_y;
     float height_wall;
-
-    height_wall = hit * CUB_SIZE/ data->projection_plan;
-    printf("height %f\n", height_wall);
-    end_y = (HEIGHT - height_wall) / 2;
-    draw_ceiling(data, end_y, x);
-       
+    
+    height_wall = CUB_SIZE / hit * data->projection_plan;
+    height_wall /= CUB_SIZE;
+    printf("height %f\n", height_wall * 900 / 100);
+    draw_ceiling(data, hit, x);
+    draw_walls(data, height_wall * HEIGHT / 100, x); 
 }
 
 void draw_fov(t_data *data)
@@ -88,16 +114,15 @@ void draw_fov(t_data *data)
     float tmp;
     float hit;
     
-    int f;
+    float f;
     f = 0;
-    tmp = ((30 * M_PI) / 180) + data->rotationAngle;
-    while (tmp > data->rotationAngle - ((30 * M_PI) / 180))
+    tmp = data->rotationAngle - ((30 * M_PI) / 180);
+    while (tmp <= data->rotationAngle + ((30 * M_PI) / 180))
     {
         hit = render_line(data, tmp);
-        // ptintf("%g\");
-        draw_fake_3D(data, hit, f);
     printf("-------------------> %f\n", hit);
-        tmp -= 0.000655;
+        draw_fake_3D(data, hit, f);
+        tmp += 0.000655;
         f++;
     }
     // printf("=======================>%d\n", f);

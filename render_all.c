@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/25 20:34:52 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/28 18:19:35 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ float render_line(t_data *data, float Angle)
         b_tmp += sin(Angle);
         a_tmp +=  cos(Angle);
     }
-    a_tmp = a_tmp * data->f / save_a;
-    b_tmp = b_tmp * data->z / save_b;
-    
-    return (sqrtf(powf(a_tmp - data->f, 2)+ powf(b_tmp  - data->z, 2)));
+    a_tmp *= data->f / save_a;
+    b_tmp *= data->z / save_b;
+    return (sqrtf(powf(((a_tmp - data->f) * CUB_SIZE), 2) + powf(((b_tmp - data->z) * CUB_SIZE), 2)));
     
 }
 void render(t_data *data)
