@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/29 18:57:48 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/30 20:06:35 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,12 @@ void draw_walls(t_data *data, float height_wall, float x)
 {
     float start_y;
     float end_y;
+
+
     int i = 0;
     float tmp_height;
-    // start_y = height_wall / 2;
-    // end = ((HEIGHT - height_wall) / 2);
+    start_y = height_wall / 2;
+    end_y = ((HEIGHT - height_wall) / 2);
     
     if (height_wall >= 100)
     {
@@ -87,13 +89,13 @@ void draw_walls(t_data *data, float height_wall, float x)
     }
     else
     {
-        tmp_height = height_wall * HEIGHT / 100;
+        tmp_height = (height_wall * HEIGHT / 100);
         start_y = (HEIGHT - tmp_height) / 2;
         end_y = tmp_height;
     }
-    while (i < end_y)
+    while (i <= end_y)
     {
-        put_pixel_to_image1(data,  x , start_y, 0);
+        put_pixel_to_image1(data,  x , start_y,  0);
         start_y++;
         i++;
     }    
@@ -106,9 +108,10 @@ void draw_fake_3D(t_data *data, float hit, float x)
     
     height_wall = CUB_SIZE / hit * data->projection_plan;
     height_wall /= CUB_SIZE;
-    printf("height %f\n", floorf(height_wall * 100 / 100));
+    printf("height %f\n", floorf(height_wall * 900 / 100));
     draw_ceiling(data, hit , x);
-    draw_walls(data, height_wall * 1300 / 100, x); 
+    draw_walls(data, (height_wall * 900/ 100), x); 
+
     // draw_walls(data, floorf(height_wall * 1100 / 100), x); 
 
 }
