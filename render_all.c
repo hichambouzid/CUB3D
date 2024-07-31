@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/29 18:16:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:48:19 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ float render_line(t_data *data, float Angle)
         if (!check_coler(data, a_tmp - 1, b_tmp + 1))
                     break ;
         put_pixel_to_image(data,a_tmp, b_tmp, 0x00FF0000);
-        b_tmp += sin(Angle);
-        a_tmp +=  cos(Angle);
+        b_tmp += sin(Angle) * 0.05;
+        a_tmp +=  cos(Angle) * 0.05;
     }
-    a_tmp *= data->f / save_a;
-    b_tmp *= data->z / save_b;
+    // a_tmp *= data->f / save_a;
+    // b_tmp *= data->z / save_b;
     // float corectdis  = sqrtf(powf(((a_tmp - data->f) * CUB_SIZE), 2) + powf(((b_tmp - data->z) * CUB_SIZE), 2));
     // float newdis = corectdis * cos(data->rotationAngle * 0.5);
     
     
-    return (sqrtf(powf(((a_tmp - data->f) * CUB_SIZE), 2) + powf(((b_tmp - data->z) * CUB_SIZE), 2)));
+    return (sqrt(pow(((a_tmp - save_a)), 2) + pow(((b_tmp - save_b)), 2)));
     // return (newdis);
     
 }

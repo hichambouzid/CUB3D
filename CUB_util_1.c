@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/30 20:06:35 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:50:42 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ void draw_walls(t_data *data, float height_wall, float x)
 
 
     int i = 0;
-    float tmp_height;
+    // float tmp_height;
     start_y = height_wall / 2;
     end_y = ((HEIGHT - height_wall) / 2);
     
-    if (height_wall >= 100)
+    if (height_wall >= 900)
     {
         start_y = 0;
         end_y = HEIGHT;
     }
     else
     {
-        tmp_height = (height_wall * HEIGHT / 100);
-        start_y = (HEIGHT - tmp_height) / 2;
-        end_y = tmp_height;
+        // tmp_height = (height_wall * HEIGHT / 100);
+        start_y = (HEIGHT - height_wall) / 2;
+        end_y = height_wall;
     }
     while (i <= end_y)
     {
@@ -106,11 +106,11 @@ void draw_fake_3D(t_data *data, float hit, float x)
     // float end_y;
     float height_wall;
     
-    height_wall = CUB_SIZE / hit * data->projection_plan;
-    height_wall /= CUB_SIZE;
-    printf("height %f\n", floorf(height_wall * 900 / 100));
+    height_wall = ( CUB_SIZE / hit )* data->projection_plan;
+    // height_wall /= CUB_SIZE;
+    printf("height %f\n", height_wall);
     draw_ceiling(data, hit , x);
-    draw_walls(data, (height_wall * 900/ 100), x); 
+    draw_walls(data, floorf(height_wall), x); 
 
     // draw_walls(data, floorf(height_wall * 1100 / 100), x); 
 
@@ -120,6 +120,15 @@ void draw_fake_3D(t_data *data, float hit, float x)
 // {
 
 // }
+
+float nor_angle(float angle) // normalize the angle
+{
+	if (angle < 0)
+		angle += (2 * M_PI);
+	if (angle > (2 * M_PI))
+		angle -= (2 * M_PI);
+	return (angle);
+}
 
 void draw_fov(t_data *data)
 {
@@ -135,7 +144,7 @@ void draw_fov(t_data *data)
         hit = render_line(data, tmp);
     // printf("-------------------> %f\n", hit);
         data->angle = tmp - data->rotationAngle;
-        draw_fake_3D(data, hit * cos(data->angle), f);
+        draw_fake_3D(data, hit * cos(nor_angle(tmp - data->rotationAngle)), f);
         tmp += 0.000655;
         f++;
     }

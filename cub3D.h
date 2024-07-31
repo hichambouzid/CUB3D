@@ -9,7 +9,7 @@
 #include <math.h>
 
 #define FOV 60
-#define CUB_SIZE 60
+#define CUB_SIZE 20
 // #define up 119	
 // #define down 115
 // #define left 97
