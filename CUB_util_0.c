@@ -6,24 +6,25 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/25 17:02:49 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:53:38 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void ft_putstr_fd(char *str, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 		write(fd, &str[i++], 1);
 }
-int ft_strlen(char *str)
+
+int	ft_strlen(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 		i++;
@@ -42,24 +43,23 @@ int	ft_strleen(char **ptr)
 	return (i);
 }
 
-void get_cordinate(t_data *data)
+void	get_cordinate(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (data->map[i])
 	{
-				// printf("-----------\n");
 		j = 0;
 		while (data->map[i][j])
 		{
-			if (data->map[i][j] == 'N' || data->map[i][j]  == 'E' ||
-			data->map[i][j] == 'W' || data->map[i][j] == 'S')
+			if (data->map[i][j] == 'N' || data->map[i][j] == 'E'
+				|| data->map[i][j] == 'W' || data->map[i][j] == 'S')
 			{
 				data->x = j;
 				data->y = i;
-				return;
+				return ;
 			}
 			j++;
 		}
@@ -67,13 +67,12 @@ void get_cordinate(t_data *data)
 	}
 	data->x = 0;
 	data->y = 0;
-
 }
 
-void draw_mini_square(t_data *data)
+void	draw_mini_square(t_data *data)
 {
-	float j;
-	float i;
+	float	j;
+	float	i;
 
 	j = data->z * 20 + 8;
 	while (j < (data->z * 20) + 14)
@@ -81,19 +80,19 @@ void draw_mini_square(t_data *data)
 		i = data->f * 20 + 8;
 		while (i < (data->f * 20) + 14)
 		{
-			put_pixel_to_image(data,  i , j, 0x00FF0000);
+			put_pixel_to_image(data, i, j, 0x00FF0000);
 			i++;
 		}
 		j++;
 	}
 }
 
-int wall_check(t_data *data,float z, float f)
+int	wall_check(t_data *data, float z, float f)
 {
 	int j;
 	int i;
 	char *tmp;
-	
+
 	j = z * 20 + 8;
 	while (j < (z * 20) + 14)
 	{

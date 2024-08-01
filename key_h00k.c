@@ -12,17 +12,16 @@
 
 #include "cub3D.h"
 
-int  ft_close(int key)
+int	ft_close(int key)
 {
 	(void)key;
-		// todo : add  function that free all memory allocated
-		exit(1);
-		return (1);
+	// todo : add  function that free all memory allocated
+	exit(1);
+	return (1);
 }
 
-int key_hook(int key, t_data *data)
+int	key_hook(int key, t_data *data)
 {
-
 	printf("key -> %d\n", key);
 	if (key == 65307)
 	{
@@ -56,10 +55,10 @@ int key_hook(int key, t_data *data)
 	return (1);
 }
 
-int processInput(t_data *data)
+int	processInput(t_data *data)
 {
-	mlx_hook(data->mlx_win,2, 17,key_hook, data);
+	mlx_hook(data->mlx_win, 2, 17, key_hook, data);
 	mlx_mouse_hook(data->mlx_win, key_hook, data);
-	mlx_hook(data->mlx_win,17, 0,ft_close, NULL);
+	mlx_hook(data->mlx_win, 17, 0, ft_close, NULL);
 	return (0);
 }
