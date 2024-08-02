@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/01 22:28:21 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:17:03 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	draw_walls(t_data *data, float height_wall, float x)
 	// float tmp_height;
 	start_y = height_wall / 2;
 	end_y = ((HEIGHT - height_wall) / 2);
-	if (height_wall >= 900)
+	if (height_wall >= HEIGHT)
 	{
 		start_y = 0;
 		end_y = HEIGHT;
@@ -105,7 +105,7 @@ void	draw_fake_3D(t_data *data, float hit, float x)
 	// float end_y;
 	height_wall = (CUB_SIZE / hit) * data->projection_plan;
 	// height_wall /= CUB_SIZE;
-	printf("height %f\n", height_wall);
+	// printf("height %f\n", height_wall);
 	draw_ceiling(data, hit, x);
 	draw_walls(data, floorf(height_wall), x);
 	// draw_walls(data, floorf(height_wall * 1100 / 100), x);

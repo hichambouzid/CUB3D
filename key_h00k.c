@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/25 16:14:05 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/02 11:55:02 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,20 @@ int	key_hook(int key, t_data *data)
 	return (1);
 }
 
+int key_releas(int key, t_data *data)
+{
+	(void)data;
+	printf("key %d\n", key);
+	if (key == 119)
+		return (0);
+	// render(data);'
+	return (1);
+}
+
 int	processInput(t_data *data)
 {
-	mlx_hook(data->mlx_win, 2, 17, key_hook, data);
+	mlx_hook(data->mlx_win, 02, 17, key_hook, data);
+	// mlx_hook(data->mlx_win, 3, (1L<<1), key_releas, data);
 	mlx_mouse_hook(data->mlx_win, key_hook, data);
 	mlx_hook(data->mlx_win, 17, 0, ft_close, NULL);
 	return (0);

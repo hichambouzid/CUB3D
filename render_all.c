@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/01 22:22:24 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/02 14:12:56 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	check_coler(t_data *data, int x, int y)
 	return (1);
 }
 
+// float get_increment_value(float Angle)
+// {
+	
+// }
+
 float	render_line(t_data *data, float Angle)
 {
 	float	a_tmp;
@@ -33,6 +38,7 @@ float	render_line(t_data *data, float Angle)
 	b_tmp = 11 + (data->z * 20);
 	save_a = 11 + (data->f * 20);
 	save_b = 11 + (data->z * 20);
+	// float increment_value = get_increment_value(Angle);
 	while (1)
 	{
 		if (!check_coler(data, a_tmp, b_tmp))
@@ -46,10 +52,15 @@ float	render_line(t_data *data, float Angle)
 		if (!check_coler(data, a_tmp - 1, b_tmp + 1))
 			break ;
 		put_pixel_to_image(data, a_tmp, b_tmp, 0x00FF0000);
-		b_tmp += sin(Angle) * 0.1;
-		a_tmp += cos(Angle) * 0.1;
+		b_tmp += (sin(Angle) * 0.05) * 5;
+		a_tmp += (cos(Angle) * 0.05) * 5;
 	}
-	return (sqrt(pow(((a_tmp - save_a)), 2) + pow(((b_tmp - save_b)), 2)));
+	while (!check_coler(data, a_tmp, b_tmp))
+	{
+		b_tmp -= sin(Angle) * 0.05;
+		a_tmp -= cos(Angle) * 0.05;		
+	}
+	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
 
 void	render(t_data *data)

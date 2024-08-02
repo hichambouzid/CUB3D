@@ -48,6 +48,7 @@ typedef struct data
 	float	projection_plan;
 	float	flag;
 	void	*mlx_tmp;
+
 }			t_data;
 
 typedef struct info
