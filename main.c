@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/02 14:12:17 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:39:07 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ void	draw_square(t_data *data, int f, int z)
 		i = z * 20;
 		while (i < (z * 20) + 20)
 		{
-			// if (((i % 20 == 0 || j % 20 == 0)
-			// 	&& data->map[f][z] != ' '))
-			// 	put_pixel_to_image(data, i, j, 0x00808080);
-			// else
 			put_pixel_to_image(data, i, j, coler);
 			i++;
 		}
@@ -82,27 +78,13 @@ void	setup(t_data *data)
 	}
 }
 
-// void render(t_data *data)
-// {
-// 	// clear windows
-// 	// distroy image map
-// 	// rander map
-// 	// rander rays
-// 	// draw player with new possition
-
-// 	printf("---> %d\n", data->x);
-// 	printf("-----------%d-----\n", data->y);
-// 	get_cordinate(data);
-// 	draw_mini_square(data);
-// }
-
 int	main(int ac, char **av)
 {
-	t_data data;
+	t_data	data;
+
 	(void)ac;
 	(void)av;
-	// int i;
-	// i = 0;
+    
 	char *mapp[] = {"        1111111111111111111111111",
 		"        1000000000110000000000001",
 		"        1011000001110000000000001",
@@ -129,18 +111,16 @@ int	main(int ac, char **av)
 	get_cordinate(&data);
 	data.projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
 	printf("---> %f\n", data.projection_plan);
-	data.rotationAngle = get_pi_Angle(data.map[(int)data.y][(int)data.x]);
+	data.rotationAngle = get_pi_angle(data.map[(int)data.y][(int)data.x]);
 	data.flag = 0;
 	init_window(&data);
 	setup(&data);
 	data.z = data.y;
 	data.f = data.x;
-	// printf("%d\n", data.y);
 	render(&data);
 	while (1)
 	{
-		processInput(&data);
-		// mlx_loop_hook(data.mlx, &processInput, (void *)&data);
+		processinput(&data);
 		mlx_loop(data.mlx);
 	}
 }

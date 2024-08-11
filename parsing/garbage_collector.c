@@ -6,27 +6,20 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:10:24 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/07/24 16:48:59 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:12:07 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-// #include <stdlib.h>
 
-// typedef struct collector
-// {
-// 	int count;
-// 	void *garbage[10000];
-// } t_collector;
-
-void *ft_calloc(size_t count, size_t size, t_collector *collector)
+void	*ft_calloc(size_t count, size_t size, t_collector *collector)
 {
-	void *ptr;
-	size_t i;
+	void	*ptr;
+	size_t	i;
 
 	i = 0;
 	ptr = malloc(count * size);
-	if(!ptr)
+	if (!ptr)
 		return (NULL);
 	while (i < count * size)
 	{
@@ -37,9 +30,9 @@ void *ft_calloc(size_t count, size_t size, t_collector *collector)
 	return (ptr);
 }
 
-void ft_free(t_collector *collector)
+void	ft_free(t_collector *collector)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (i == 0)
@@ -51,4 +44,3 @@ void ft_free(t_collector *collector)
 	}
 	return ;
 }
-

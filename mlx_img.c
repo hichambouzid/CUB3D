@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/02 14:10:03 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:44:24 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ void	get_img_data(t_data *data, int width, int height)
 	int	endian;
 	int	i;
 
-	// char *str_tmp;
-	// if (data->flag)
-	//     str_tmp = data->str;
-	// else
-	//     str_tmp = data->str1;
 	i = 0;
 	data->str = mlx_get_data_addr(data->mlx_img, &bits_per_pixel,
 			&data->line_lenght, &endian);
@@ -39,11 +34,11 @@ void	get_img_data(t_data *data, int width, int height)
 	while (i < height * width)
 	{
 		*((unsigned int *)data->str + i) = 0x00808080;
-		// change the coler of tha floor depending to .cub
 		*((unsigned int *)data->str1 + i) = 0x000000FF;
 		i++;
 	}
 }
+
 void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
 	if (key == 97)
@@ -71,8 +66,8 @@ void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 
 void	allow_render(t_data *data, int key)
 {
-	float tmp_x;
-	float tmp_y;
+	float	tmp_x;
+	float	tmp_y;
 
 	change_cordinate(data, key, &tmp_x, &tmp_y);
 	if (!wall_check(data, tmp_y + data->z, tmp_x + data->f))

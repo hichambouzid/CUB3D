@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/02 14:12:56 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:45:33 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ int	check_coler(t_data *data, int x, int y)
 	return (1);
 }
 
-// float get_increment_value(float Angle)
-// {
-	
-// }
-
 float	render_line(t_data *data, float Angle)
 {
 	float	a_tmp;
@@ -38,7 +33,6 @@ float	render_line(t_data *data, float Angle)
 	b_tmp = 11 + (data->z * 20);
 	save_a = 11 + (data->f * 20);
 	save_b = 11 + (data->z * 20);
-	// float increment_value = get_increment_value(Angle);
 	while (1)
 	{
 		if (!check_coler(data, a_tmp, b_tmp))
@@ -58,7 +52,7 @@ float	render_line(t_data *data, float Angle)
 	while (!check_coler(data, a_tmp, b_tmp))
 	{
 		b_tmp -= sin(Angle) * 0.05;
-		a_tmp -= cos(Angle) * 0.05;		
+		a_tmp -= cos(Angle) * 0.05;
 	}
 	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
@@ -74,25 +68,8 @@ void	render(t_data *data)
 	else
 		data->mlx_tmp = data->mlx_3D;
 	get_img_data(data, WIDTH, HEIGHT);
-	// data->mlx_tmp = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	// get_img_data(data, WIDTH, HEIGHT);
-	// mlx_put_image_to_window(data->mlx, data->mlx_win, data->tmp, 0, 0);
 	setup(data);
 	draw_mini_square(data);
-	// int i = 0;
-	// render_line(data, data->rotationAngle);
 	draw_fov(data);
-	// printf("data->f====%f\n", data->f);
-	// printf("data->z====%f\n", data->z);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_tmp, 0, 0);
-	// float a_tmp = 11 + (data->f * 20);
-	// float b_tmp = 11 + (data->z * 20);
-	// while (1)
-	// {
-	//     if (!check_coler(data, a_tmp, b_tmp))
-	//         break ;
-	//     put_pixel_to_image(data,a_tmp, b_tmp, 0x00FF0000);
-	//     b_tmp += sin(data->rotationAngle);
-	//     a_tmp +=  cos(data->rotationAngle);
-	// }
 }

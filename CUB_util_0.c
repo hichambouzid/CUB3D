@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/02 12:23:00 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/11 22:17:40 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,47 +67,4 @@ void	get_cordinate(t_data *data)
 	}
 	data->x = 0;
 	data->y = 0;
-}
-
-void	draw_mini_square(t_data *data)
-{
-	float	j;
-	float	i;
-
-	j = data->z * 20 + 8;
-	while (j < (data->z * 20) + 14)
-	{
-		i = data->f * 20 + 8;
-		while (i < (data->f * 20) + 14)
-		{
-			put_pixel_to_image(data, i, j, 0x00FF0000);
-			i++;
-		}
-		j++;
-	}
-}
-
-int	wall_check(t_data *data, float z, float f)
-{
-	int j;
-	int i;
-	char *tmp;
-
-	j = z * 20 + 8;
-	while (j < (z * 20) + 14)
-	{
-		i = f * 20 + 8;
-		while (i < (f * 20) + 14)
-		{
-			tmp = data->str + (int)(j * data->line_lenght + 4 * i);
-			if (*(unsigned int *)tmp == 0)
-			{
-				printf("hee hee ]\n");
-				return (0);
-			}
-			i++;
-		}
-		j++;
-	}
-	return (1);
 }
