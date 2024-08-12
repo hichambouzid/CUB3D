@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_h00k.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:37:00 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:05:54 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_close(int key)
 
 int	key_hook(int key, t_data *data)
 {
-	printf("key -> %d\n", key);
 	if (key == 65307)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
@@ -30,19 +29,9 @@ int	key_hook(int key, t_data *data)
 	if (key == 97 || key == 100 || key == 119 || key == 115)
 		allow_render(data, key);
 	else if (key == 65361)
-	{
-		change_angle(&data->rotationAngle, -1);
-		render(data);
-	}
+		change_angle(&data->rotationAngle, -1, data);
 	else if (key == 65363)
-	{
-		change_angle(&data->rotationAngle, 1);
-		render(data);
-	}
-	else if (key == 65362)
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
-	}
+		change_angle(&data->rotationAngle, 1, data);
 	else if (key == 65505)
 	{
 		if (data->flag == 0)

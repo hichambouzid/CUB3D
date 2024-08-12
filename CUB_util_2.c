@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CUB_util_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:34:18 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/12 20:58:18 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,51 @@ float	nor_angle(float angle)
 	return (angle);
 }
 
+void *get_appropiate_texture(t_data *data, float angle, int v_h)
+{
+	if (v_h == 1)
+	{
+		if (angle >= 0 && angle <= M_PI)
+		{
+		// texture north
+		return ();
+		}
+		else
+		{
+			//south
+			return()
+		}
+	}
+	if (v_h == 0)
+	{
+		if (angle >= M_PI / 2 && angle <= 3 * M_PI / 2)
+		{
+		// texture left
+		return ();
+		}
+		else
+		{//right
+			return()
+		}
+	}
+
+}
+
 void	draw_fov(t_data *data)
 {
 	float	tmp;
 	float	hit;
+	int		v_h;
 	float	f;
 
 	f = 0;
 	tmp = data->rotationAngle - ((30 * M_PI) / 180);
 	while (tmp <= data->rotationAngle + ((30 * M_PI) / 180))
 	{
-		hit = render_line(data, tmp);
+		hit = render_line(data, tmp, &v_h);
+		data->img = get_appropriate_texture(data, tmp, v_h);
 		data->angle = tmp - data->rotationAngle;
-		draw_fake_3d(data, hit * cos(nor_angle(tmp - data->rotationAngle)), f);
+		draw_fake_3d(data, hit * cos(nor_angle(data->angle)), f);
 		tmp += FOV_RD / WIDTH;
 		f++;
 	}

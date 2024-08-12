@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CUB_util_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:42:06 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:26:02 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float	get_pi_angle(char c)
 	return (2 * M_PI);
 }
 
-void	change_angle(float *angle, int flag)
+void	change_angle(float *angle, int flag, t_data *data)
 {
 	if (flag == 1)
 	{
@@ -37,6 +37,7 @@ void	change_angle(float *angle, int flag)
 		if (*angle < 0)
 			*angle = 2 * M_PI;
 	}
+	render(data);
 }
 
 void	put_pixel_to_image1(t_data *data, int x, int y, int coler)
