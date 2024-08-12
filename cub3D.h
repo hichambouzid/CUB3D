@@ -36,6 +36,7 @@ typedef struct data
 	char	*str;
 	char	*str1;
 	char	*tmp_str;
+	void	*img;
 	float	x;
 	float	y;
 	float	f;
@@ -79,7 +80,7 @@ void		allow_render(t_data *data, int key);
 float		get_pi_angle(char c);
 void		change_angle(float *angle, int flag, t_data *data);
 int			check_coler(t_data *data, int x, int y);
-float		render_line(t_data *data, float Angle);
+float		render_line(t_data *data, float Angle, int *v_f);
 void		draw_fov(t_data *data);
 void		*ft_calloc(size_t count, size_t size);
 void		ft_free(t_collector *collector);

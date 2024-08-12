@@ -33,3 +33,6 @@ recode function of event and check if the user move to the wall.
 add some macros to replace too much variable.
 
 render rays.
+
+check if hiting wall horizontal or vertical .
+choose the appropiate texture .
