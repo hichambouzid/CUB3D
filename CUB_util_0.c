@@ -21,16 +21,6 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, &str[i++], 1);
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_strleen(char **ptr)
 {
 	int	i;
