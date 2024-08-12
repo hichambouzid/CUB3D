@@ -77,7 +77,7 @@ void		setup(t_data *data);
 int			wall_check(t_data *data, float z, float f);
 void		allow_render(t_data *data, int key);
 float		get_pi_angle(char c);
-void		change_angle(float *angle, int flag);
+void		change_angle(float *angle, int flag, t_data *data);
 int			check_coler(t_data *data, int x, int y);
 float		render_line(t_data *data, float Angle);
 void		draw_fov(t_data *data);

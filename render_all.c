@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:45:33 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:28:05 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,9 @@ float	render_line(t_data *data, float Angle)
 	save_b = 11 + (data->z * 20);
 	while (1)
 	{
-		if (!check_coler(data, a_tmp, b_tmp))
-			break ;
-		if (!check_coler(data, a_tmp + 1, b_tmp + 1))
-			break ;
-		if (!check_coler(data, a_tmp - 1, b_tmp - 1))
-			break ;
-		if (!check_coler(data, a_tmp + 1, b_tmp - 1))
-			break ;
-		if (!check_coler(data, a_tmp - 1, b_tmp + 1))
+		if (!check_coler(data, a_tmp, b_tmp) || !check_coler(data, a_tmp - 1,
+				b_tmp - 1) || !check_coler(data, a_tmp + 1, b_tmp - 1)
+			|| !check_coler(data, a_tmp - 1, b_tmp + 1))
 			break ;
 		put_pixel_to_image(data, a_tmp, b_tmp, 0x00FF0000);
 		b_tmp += (sin(Angle) * 0.05) * 5;
