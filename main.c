@@ -80,47 +80,75 @@ void	setup(t_data *data)
 
 int	main(int ac, char **av)
 {
-	t_data	data;
-	char	*mapp[] = {"        1111111111111111111111111",
-			"        1000000000110000000000001",
-			"        1011000001110000000000001",
-			"        1001000000000000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"111111111011000001110000000000001",
-			"100000000011000001110011000111111",
-			"11110111111111011100010010001", "11110111111111011101010010001",
-			"11000000110101011100000010001", "10000000000000001100000010001",
-			"10000000000000000001010010001", "11000001110101011111011110N0111",
-			"11110111 1110101 101111010001", "11111111 1111111 111111111111",
-			NULL};
+	t_data	*data;
+	// t_collector *g_collector;
 
 	(void)ac;
 	(void)av;
-	data.map = mapp;
-	get_cordinate(&data);
-	data.projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
-	printf("---> %f\n", data.projection_plan);
-	data.rotationAngle = get_pi_angle(data.map[(int)data.y][(int)data.x]);
-	data.flag = 0;
-	init_window(&data);
-	setup(&data);
-	data.z = data.y;
-	data.f = data.x;
-	render(&data);
-	while (1)
+
+	data = (t_data *)ft_calloc(1, sizeof(t_data), NULL);
+	data->map = (char **)ft_calloc(10000, sizeof(char *), NULL);
+	data->params = (t_params *)ft_calloc(1, sizeof(t_params), NULL);
+	data->params->north = NULL;
+	data->params->south = NULL;
+	data->params->west = NULL;
+	data->params->east = NULL;
+	data->params->floor = -1;
+	data->params->ceiling = -1;
+    printf("IS_VALID_MAP  %d\n", valid_map(av[1], data));
+    printf("IS_VALID_param  %s\n",  data->params->north);
+    printf("IS_VALID_param  %s\n",  data->params->south);
+    printf("IS_VALID_param  %s\n",  data->params->west);
+    printf("IS_VALID_param  %s\n",  data->params->east);
+    printf("IS_VALID_param  %i\n",  data->params->floor);
+    printf("IS_VALID_param  %i\n",  data->params->ceiling);
+
+	printf("==================================\n\n");
+	int i = 0;
+	while (data->map[i])
 	{
-		processinput(&data);
-		mlx_loop(data.mlx);
-	}
+		printf("%s\n", data->map[i]);
+		i++;
+	}	
+		
+
+	
+	// char *mapp[] = {"        1111111111111111111111111",
+	// 	"        1000000000110000000000001",
+	// 	"        1011000001110000000000001",
+	// 	"        1001000000000000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"111111111011000001110000000000001",
+	// 	"100000000011000001110011000111111", "11110111111111011100010010001",
+	// 	"11110111111111011101010010001", "11000000110101011100000010001",
+	// 	"10000000000000001100000010001", "10000000000000000001010010001",
+	// 	"11000001110101011111011110N0111", "11110111 1110101 101111010001",
+	// 	"11111111 1111111 111111111111", NULL};
+	// data.map = mapp;
+	// get_cordinate(&data);
+	// data.projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
+	// printf("---> %f\n", data.projection_plan);
+	// data.rotationAngle = get_pi_angle(data.map[(int)data.y][(int)data.x]);
+	// data.flag = 0;
+	// init_window(&data);
+	// setup(&data);
+	// data.z = data.y;
+	// data.f = data.x;
+	// render(&data);
+	// while (1)
+	// {
+	// 	processinput(&data);
+	// 	mlx_loop(data.mlx);
+	// }
 }
