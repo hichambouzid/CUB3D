@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/12 14:26:02 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/14 00:54:56 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	change_angle(float *angle, int flag, t_data *data)
 {
 	if (flag == 1)
 	{
-		*angle += 5 * (M_PI / 180);
+		*angle += 0.2/*(5 * (M_PI / 180))*/;
 		if (*angle > 2 * M_PI)
 			*angle = 0;
 	}
 	else
 	{
-		*angle -= 4 * (M_PI / 180);
+		*angle -= 0.2/*(5 * (M_PI / 180))*/;
 		if (*angle < 0)
 			*angle = 2 * M_PI;
 	}
@@ -82,7 +82,7 @@ void	draw_walls(t_data *data, float height_wall, float x)
 	}
 	while (i <= end_y)
 	{
-		put_pixel_to_image1(data, x, start_y, 0);
+		put_pixel_to_image1(data, x, start_y, data->coler);
 		start_y++;
 		i++;
 	}

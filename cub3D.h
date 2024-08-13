@@ -36,7 +36,8 @@ typedef struct data
 	char	*str;
 	char	*str1;
 	char	*tmp_str;
-	void	*img;
+	// void	*img;
+	int coler;
 	float	x;
 	float	y;
 	float	f;
