@@ -106,4 +106,5 @@ int			ft_atoi_check(const char *str, int *number);
 void		color_rgb(int i, int *color, int c);
 void		ft_free_table(char **tab);
 int			ft_iswhitespace(int c);
+int			ft_allwhitespace(char *s);
 #endif

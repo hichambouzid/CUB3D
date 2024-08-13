@@ -97,7 +97,7 @@ int	valid_map_helper(t_data *data, int fd, int flag, int params)
 	rline = get_next_line(fd);
 	while (rline)
 	{
-		if (!ft_strcmp(rline, "\n") && flag)
+		if ((!ft_strcmp(rline, "\n") || ft_allwhitespace(rline)) && flag)
 			return (free(rline), 0);
 		else if (ft_strcmp(rline, "\n") && !flag && params != 6)
 		{

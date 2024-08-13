@@ -67,6 +67,7 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	// 	b_tmp -= (sin(Angle) * 0.05);
 	// 	a_tmp -= cos(Angle) * 0.05;
 	// }
+	*v_f = check_vr_hr(data, a_tmp, b_tmp);
 	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
 
