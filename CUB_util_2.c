@@ -112,10 +112,7 @@ int	wall_check(t_data *data, float z, float f)
 		{
 			tmp = data->str + (int)(j * data->line_lenght + 4 * i);
 			if (*(unsigned int *)tmp == 0)
-			{
-				printf("hee hee ]\n");
 				return (0);
-			}
 			i++;
 		}
 		j++;

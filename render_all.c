@@ -58,11 +58,15 @@ float	render_line(t_data *data, float Angle, int *v_f)
 			|| !check_coler(data, a_tmp - 1, b_tmp + 1))
 			break ;
 		put_pixel_to_image(data, a_tmp, b_tmp, 0x00FF0000);
-		b_tmp += (sin(Angle) * 0.05) * 5;
-		a_tmp += (cos(Angle) * 0.05) * 5;
+		b_tmp += (sin(Angle) * 0.05)  * 10;
+		a_tmp += (cos(Angle) * 0.05) * 10;
 	}
-	*v_f = check_vr_hr(data, a_tmp, b_tmp);
-	printf("----> %d\n", *v_f);
+	// while (!check_coler(data, roundf(a_tmp), roundf(b_tmp)))
+	// {
+	// 	printf("===========================\n");
+	// 	b_tmp -= (sin(Angle) * 0.05);
+	// 	a_tmp -= cos(Angle) * 0.05;
+	// }
 	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
 
@@ -70,7 +74,7 @@ void	render(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->mlx_img);
 	mlx_destroy_image(data->mlx, data->mlx_3D);
-	data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->mlx_img = mlx_new_image(data->mlx, WIDTH , HEIGHT);
 	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->flag != 0)
 		data->mlx_tmp = data->mlx_img;

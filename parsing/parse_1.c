@@ -105,14 +105,14 @@ int	valid_param_helper(char *p, char **param, int *color, int is_color)
 		rgb = ft_split(p, ',');
 		i = -1;
 		if (count_words(p, ',') != 3)
-			return (free(rgb), 0);
+			return (ft_free_table(rgb), 0);
 		while (++i < 3)
 		{
 			if (!ft_atoi_check(rgb[i], &c) || c < 0 || c > 255)
-				return (free(rgb), 0);
+				return (ft_free_table(rgb), 0);
 			color_rgb(i, color, c);
 		}
-		free(rgb);
+		ft_free_table(rgb);
 	}
 	return (1);
 }
