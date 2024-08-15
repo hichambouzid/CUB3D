@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/14 00:53:59 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:45:45 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,23 @@ void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
 	if (key == 97)
 	{
-		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.5;
-		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.5;
+		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.25;
+		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.25;
 	}
 	else if (key == 100)
 	{
-		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.5;
-		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.5;
+		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.25;
+		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.25;
 	}
 	else if (key == 119)
 	{
-		*tmp_x = cos(data->rotationAngle) * 0.5;
-		*tmp_y = sin(data->rotationAngle) * 0.5;
+		*tmp_x = cos(data->rotationAngle) * 0.25;
+		*tmp_y = sin(data->rotationAngle) * 0.25;
 	}
 	else if (key == 115)
 	{
-		*tmp_x = -cos(data->rotationAngle) * 0.5;
-		*tmp_y = -sin(data->rotationAngle) * 0.5;
+		*tmp_x = -cos(data->rotationAngle) * 0.25;
+		*tmp_y = -sin(data->rotationAngle) * 0.25;
 	}
 	return ;
 }

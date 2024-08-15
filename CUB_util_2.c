@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/14 00:32:38 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/15 19:15:55 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,21 @@ int get_appropriate_texture(t_data *data, float angle, int v_h)
 	(void)data;
 	if (v_h == 1)
 	{
-		if (angle >= 0 && angle <= M_PI)
+		if ((angle > 0 && angle < M_PI) ||
+			(angle > M_PI * 2 &&  angle < (400 * M_PI / 180)))
 		{
 		// texture north
-		return (0X66FF66);
+			return(0XCCE5FF);
 		}
 		else
 		{
+		return (0X66FF66);
 			//south
-			return(0XCCE5FF);
 		}
 	}
 	if (v_h == 0)
 	{
-		if (angle >= M_PI / 2 && angle <= 3 * M_PI / 2)
+		if ((angle > M_PI / 2 && angle < 3 * M_PI / 2))
 		{
 		// texture left
 		return (0XA0A0A0);
