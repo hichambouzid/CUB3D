@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror  -I ./minilibx_mms_20200219 -Imlx_linux -O3
 CFILS = key_h00k.c  main.c  mlx_img.c CUB_util_0.c render_all.c CUB_util_1.c \
 		get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
 		parsing/parse_0.c parsing/parse_1.c parsing/parse_2.c parsing/parse_3.c parsing/garbage_collector.c \
-		CUB_util_2.c
+		CUB_util_2.c textures.c
 
 
 OBJS = $(CFILS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/16 01:31:05 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:25:07 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,7 @@ void	init_window(t_data *data)
 		exit(1);
 	}
 	data->mlx_win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
-	// data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	// if (data->flag)
-	// 	data->mlx_tmp = data->mlx_img;
-	// else
-		// data->mlx_tmp = data->mlx_3D;
 	get_img_data(data, WIDTH, HEIGHT);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_3D, 0, 0);
 }
@@ -38,44 +33,6 @@ int	get_coler(char c)
 	if (c == '1')
 		return (0);
 	return (0x00808080);
-}
-
-void	draw_square(t_data *data, int f, int z)
-{
-	int	coler;
-	int	i;
-	int	j;
-
-	coler = get_coler(data->map[f][z]);
-	j = f * 20;
-	while (j <= (f * 20) + 20)
-	{
-		i = z * 20;
-		while (i < (z * 20) + 20)
-		{
-			put_pixel_to_image(data, i, j, coler);
-			i++;
-		}
-		j++;
-	}
-}
-
-void	setup(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < ft_strleen(data->map))
-	{
-		j = 0;
-		while (data->map[i][j])
-		{
-			draw_square(data, i, j);
-			j++;
-		}
-		i++;
-	}
 }
 
 void	init_data(t_data **data)
@@ -91,9 +48,9 @@ void	init_data(t_data **data)
 	(*data)->params->ceiling = -1;
 }
 
-void error(char *err)
+void	error(char *err)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (err[i])
@@ -103,8 +60,7 @@ void error(char *err)
 
 int	main(int ac, char **av)
 {
-	t_data		*data;
-	// t_collector *g_collector;
+	t_data	*data;
 
 	if (ac != 2)
 		return (error("Error : Invalid number of parameters !\n"), 1);
@@ -116,7 +72,6 @@ int	main(int ac, char **av)
 	data->rotationAngle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->flag = 0;
 	init_window(data);
-	setup(data);
 	data->z = data->y;
 	data->f = data->x;
 	render(data);

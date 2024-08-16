@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/16 01:05:47 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:19:03 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,33 @@ void	get_img_data(t_data *data, int width, int height)
 	int	i;
 
 	i = 0;
-	// data->str = mlx_get_data_addr(data->mlx_img, &bits_per_pixel,
-	// 		&data->line_lenght, &endian);
 	data->str1 = mlx_get_data_addr(data->mlx_3D, &bits_per_pixel,
 			&data->line_lenght, &endian);
 	while (i < height * width)
-	{
-		// *((unsigned int *)data->str + i) = 0x00808080;
-		*((unsigned int *)data->str1 + i) = 0x000000FF;
-		i++;
-	}
+		*((unsigned int *)data->str1 + i++) = 0x000000FF;
 }
 
 void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
 	if (key == 97)
 	{
-		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.5;
-		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.5;
+		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.35;
+		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.35;
 	}
 	else if (key == 100)
 	{
-		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.5;
-		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.5;
+		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.35;
+		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.35;
 	}
 	else if (key == 119)
 	{
-		*tmp_x = cos(data->rotationAngle) * 0.5;
-		*tmp_y = sin(data->rotationAngle) * 0.5;
+		*tmp_x = cos(data->rotationAngle) * 0.35;
+		*tmp_y = sin(data->rotationAngle) * 0.35;
 	}
 	else if (key == 115)
 	{
-		*tmp_x = -cos(data->rotationAngle) * 0.5;
-		*tmp_y = -sin(data->rotationAngle) * 0.5;
+		*tmp_x = -cos(data->rotationAngle) * 0.35;
+		*tmp_y = -sin(data->rotationAngle) * 0.35;
 	}
 	return ;
 }

@@ -48,6 +48,7 @@ typedef struct data
 	int			line_lenght;
 	char		*str;
 	char		*str1;
+	int			coler;
 	char		*tmp_str;
 	float		x;
 	float		y;
