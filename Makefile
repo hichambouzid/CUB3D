@@ -14,7 +14,7 @@ OBJS = $(CFILS:.c=.o)
 all: $(NAME)
 
 $(NAME):$(OBJS)
-		cc $(OBJS) -fsanitize=address -Lmlx_linux -lmlx_Linux -L./minilibx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+		cc $(OBJS) -ggdb3 -fsanitize=address -Lmlx_linux -lmlx_Linux -L./minilibx-linux -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)

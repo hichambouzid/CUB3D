@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/12 20:00:10 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 01:31:05 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_window(t_data *data)
 		exit(1);
 	}
 	data->mlx_win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
-	data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	// data->mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	if (data->flag)
-		data->mlx_tmp = data->mlx_img;
-	else
-		data->mlx_tmp = data->mlx_3D;
+	// if (data->flag)
+	// 	data->mlx_tmp = data->mlx_img;
+	// else
+		// data->mlx_tmp = data->mlx_3D;
 	get_img_data(data, WIDTH, HEIGHT);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_tmp, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_3D, 0, 0);
 }
 
 int	get_coler(char c)

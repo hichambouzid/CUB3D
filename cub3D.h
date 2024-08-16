@@ -10,6 +10,7 @@
 # include <unistd.h>
 # include "get_next_line/get_next_line.h"
 
+#include <string.h>
 # define FOV 60
 # define FOV_RD (FOV * M_PI / 180)
 # define CUB_SIZE 20
