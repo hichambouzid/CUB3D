@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/15 18:45:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 01:05:47 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	put_pixel_to_image(t_data *data, int x, int y, int coler)
 {
 	char	*tmp;
 
-	tmp = data->str + (y * data->line_lenght + 4 * x);
+	tmp = data->str1 + (y * data->line_lenght + 4 * x);
 	*(unsigned int *)tmp = coler;
 }
 
@@ -27,13 +27,13 @@ void	get_img_data(t_data *data, int width, int height)
 	int	i;
 
 	i = 0;
-	data->str = mlx_get_data_addr(data->mlx_img, &bits_per_pixel,
-			&data->line_lenght, &endian);
+	// data->str = mlx_get_data_addr(data->mlx_img, &bits_per_pixel,
+	// 		&data->line_lenght, &endian);
 	data->str1 = mlx_get_data_addr(data->mlx_3D, &bits_per_pixel,
 			&data->line_lenght, &endian);
 	while (i < height * width)
 	{
-		*((unsigned int *)data->str + i) = 0x00808080;
+		// *((unsigned int *)data->str + i) = 0x00808080;
 		*((unsigned int *)data->str1 + i) = 0x000000FF;
 		i++;
 	}

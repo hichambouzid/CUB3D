@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/15 19:15:55 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 01:07:37 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	wall_check(t_data *data, float z, float f)
 {
 	int		j;
 	int		i;
-	char	*tmp;
+	// char	*tmp;
 
 	j = z * 20 + 8;
 	while (j < (z * 20) + 14)
@@ -112,8 +112,8 @@ int	wall_check(t_data *data, float z, float f)
 		i = f * 20 + 8;
 		while (i < (f * 20) + 14)
 		{
-			tmp = data->str + (int)(j * data->line_lenght + 4 * i);
-			if (*(unsigned int *)tmp == 0)
+			// tmp = data->str + (int)(j * data->line_lenght + 4 * i);
+			if (data->map[(int)(j / 20)][(int)(i / 20)] == '1')
 			{
 				printf("hee hee ]\n");
 				return (0);

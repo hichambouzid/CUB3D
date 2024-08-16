@@ -7,7 +7,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
+#include <string.h>
 # define FOV 60
 # define FOV_RD (FOV * M_PI / 180)
 # define CUB_SIZE 20
@@ -28,7 +28,7 @@ typedef struct data
 {
 	void	*mlx;
 	void	*mlx_win;
-	char	**map;
+	char	   **map;
 	void	*mlx_img;
 	void	*mlx_3D;
 	float	rotationAngle;
