@@ -26,7 +26,8 @@ void	*ft_calloc(size_t count, size_t size, t_collector *collector)
 		*((char *)ptr + i) = 0;
 		i++;
 	}
-	collector->garbage[collector->count++] = ptr;
+	if (collector)
+		collector->garbage[collector->count++] = ptr;
 	return (ptr);
 }
 
@@ -43,4 +44,30 @@ void	ft_free(t_collector *collector)
 		i++;
 	}
 	return ;
+}
+
+void	ft_free_table(char **tab)
+{
+	int i;
+
+	i = 0;
+	if (!tab && !(*tab))
+		return ;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

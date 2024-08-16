@@ -75,6 +75,7 @@ void	draw_fov(t_data *data)
 	{
 		hit = render_line(data, tmp, &v_h);
 		data->coler = get_appropriate_texture(data, tmp, v_h);
+
 		data->angle = tmp - data->rotationAngle;
 		draw_fake_3d(data, hit * cos(nor_angle(data->angle)), f);
 		tmp += FOV_RD / WIDTH;
@@ -117,7 +118,6 @@ int	wall_check(t_data *data, float z, float f)
 			{
 				printf("hee hee ]\n");
 				return (0);
-			}
 			i++;
 		}
 		j++;

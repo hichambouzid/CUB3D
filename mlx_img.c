@@ -43,23 +43,23 @@ void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
 	if (key == 97)
 	{
-		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.25;
-		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.25;
+		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.5;
+		*tmp_y = sin(data->rotationAngle - M_PI_2) * 0.5;
 	}
 	else if (key == 100)
 	{
-		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.25;
-		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.25;
+		*tmp_x = cos(data->rotationAngle + M_PI_2) * 0.5;
+		*tmp_y = sin(data->rotationAngle + M_PI_2) * 0.5;
 	}
 	else if (key == 119)
 	{
-		*tmp_x = cos(data->rotationAngle) * 0.25;
-		*tmp_y = sin(data->rotationAngle) * 0.25;
+		*tmp_x = cos(data->rotationAngle) * 0.5;
+		*tmp_y = sin(data->rotationAngle) * 0.5;
 	}
 	else if (key == 115)
 	{
-		*tmp_x = -cos(data->rotationAngle) * 0.25;
-		*tmp_y = -sin(data->rotationAngle) * 0.25;
+		*tmp_x = -cos(data->rotationAngle) * 0.5;
+		*tmp_y = -sin(data->rotationAngle) * 0.5;
 	}
 	return ;
 }
