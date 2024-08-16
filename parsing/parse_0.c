@@ -20,7 +20,7 @@ int	valid_param(char *p, t_params *params)
 	p[ft_strlen(p) - 1] = '\0';
 	psp = ft_split(p, ' ');
 	if (count_words(p, ' ') != 2)
-		return (free(psp), 0);
+		return (ft_free_table(psp), 0);
 	if (!ft_strcmp(psp[0], "NO") && !params->north)
 		ret = valid_param_helper(psp[1], &params->north, NULL, 0);
 	else if (!ft_strcmp(psp[0], "SO") && !params->south)
@@ -34,10 +34,10 @@ int	valid_param(char *p, t_params *params)
 	else if (!ft_strcmp(psp[0], "C") && params->ceiling == -1)
 		ret = valid_param_helper(psp[1], NULL, &params->ceiling, 1);
 	else
-		return (free(psp), 0);
+		return (ft_free_table(psp), 0);
 	if (!ret)
-		return (free(psp), 0);
-	return (free(psp), 1);
+		return (ft_free_table(psp), 0);
+	return (ft_free_table(psp), 1);
 }
 
 int	valid_map_components_helper(char **map, int i, int j)
@@ -45,16 +45,16 @@ int	valid_map_components_helper(char **map, int i, int j)
 	if (map[i][j] == '0' || ft_strchr("NSWE", map[i][j]))
 	{
 		if (!map[i - 1] || (map[i - 1] && !map[i - 1][j]) || (map[i - 1]
-				&& map[i - 1][j] && map[i - 1][j] == ' '))
+				&& map[i - 1][j] && ft_iswhitespace(map[i - 1][j])))
 			return (0);
 		if (!map[i + 1] || (map[i + 1] && !map[i + 1][j]) || (map[i + 1]
-				&& map[i + 1][j] && map[i + 1][j] == ' '))
+				&& map[i + 1][j] && ft_iswhitespace(map[i + 1][j])))
 			return (0);
 		if (!map[i] || (map[i] && !map[i][j - 1]) || (map[i] && map[i][j - 1]
-				&& map[i][j - 1] == ' '))
+				&& ft_iswhitespace(map[i][j - 1])))
 			return (0);
 		if (!map[i] || (map[i] && !map[i][j + 1]) || (map[i] && map[i][j + 1]
-				&& map[i][j + 1] == ' '))
+				&& ft_iswhitespace(map[i][j + 1])))
 			return (0);
 	}
 	return (1);
@@ -97,7 +97,7 @@ int	valid_map_helper(t_data *data, int fd, int flag, int params)
 	rline = get_next_line(fd);
 	while (rline)
 	{
-		if (!ft_strcmp(rline, "\n") && flag)
+		if ((!ft_strcmp(rline, "\n") || ft_allwhitespace(rline)) && flag)
 			return (free(rline), 0);
 		else if (ft_strcmp(rline, "\n") && !flag && params != 6)
 		{

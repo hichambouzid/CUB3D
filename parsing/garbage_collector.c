@@ -46,6 +46,18 @@ void	ft_free(t_collector *collector)
 	return ;
 }
 
+void	ft_free_table(char **tab)
+{
+	int i;
+
+	i = 0;
+	if (!tab && !(*tab))
+		return ;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+}
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
