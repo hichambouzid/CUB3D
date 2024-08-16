@@ -59,6 +59,10 @@ typedef struct data
 	float		flag;
 	void		*mlx_tmp;
 	t_params	*params;
+	void	*northh;
+	void	*southh;
+	void	*westt;
+	void	*eastt;
 }			t_data;
 
 typedef struct info

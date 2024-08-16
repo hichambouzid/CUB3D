@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/16 18:19:03 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 23:23:27 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	get_img_data(t_data *data, int width, int height)
 	data->str1 = mlx_get_data_addr(data->mlx_3D, &bits_per_pixel,
 			&data->line_lenght, &endian);
 	while (i < height * width)
-		*((unsigned int *)data->str1 + i++) = 0x000000FF;
+		*((unsigned int *)data->str1 + i++) = data->params->floor;
 }
 
 void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)

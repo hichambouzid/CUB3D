@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/15 22:01:22 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 23:23:44 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	draw_walls(t_data *data, float height_wall, float x)
 {
 	float	start_y;
 	float	end_y;
+	float	tmp;
+	float	y;
 	int		i;
 
 	i = 0;
@@ -80,8 +82,11 @@ void	draw_walls(t_data *data, float height_wall, float x)
 		start_y = (HEIGHT - height_wall) / 2;
 		end_y = height_wall;
 	}
+	tmp = start_y;
 	while (i <= end_y)
 	{
+		y = start_y - tmp;
+		// x = ;
 		put_pixel_to_image1(data, x, start_y, data->coler);
 		start_y++;
 		i++;
