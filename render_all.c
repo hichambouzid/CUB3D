@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/16 18:20:39 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/17 19:00:31 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ float	render_line(t_data *data, float Angle, int *v_f)
 		b_tmp -= (sin(Angle) * 0.05) * 2;
 		a_tmp -= (cos(Angle) * 0.05) * 2;
 	}
+	if (*v_f == 1)
+		data->params->texture_offset = fmod(a_tmp , 20);
+	else
+		data->params->texture_offset = fmod(b_tmp  , 20);
 	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
 

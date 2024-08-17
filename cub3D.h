@@ -34,6 +34,8 @@ typedef struct s_params
 	char	*west;
 	char	*east;
 	int		floor;
+	int linelenght;
+	float	texture_offset;
 	int		ceiling;
 }		t_params;
 
@@ -48,7 +50,7 @@ typedef struct data
 	int			line_lenght;
 	char		*str;
 	char		*str1;
-	int			coler;
+	char		*text;
 	char		*tmp_str;
 	float		x;
 	float		y;

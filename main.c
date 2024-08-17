@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/16 23:55:10 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/17 18:16:16 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,13 @@ void	error(char *err)
 
 int	main(int ac, char **av)
 {
+	int c,v;
+	int	bits_per_pixel;
+	int	endian;
 	t_data	*data;
-
+	
+	c = 0;
+	v = 0;
 	if (ac != 2)
 		return (error("Error : Invalid number of parameters !\n"), 1);
 	init_data(&data);
@@ -70,8 +75,14 @@ int	main(int ac, char **av)
 	get_cordinate(data);
 	data->projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
 	data->rotationAngle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
-	data->flag = 0;
+	data->params->floor = 0X404040;
 	init_window(data);
+	data->params->north = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/north.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->south = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/south.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->west = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/west.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->east = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/east.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	printf("----> %d\n", c);
+	printf("----> %d\n", v);
 	data->z = data->y;
 	data->f = data->x;
 	render(data);
