@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/17 16:58:53 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/21 23:46:44 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	get_img_data(t_data *data, int width, int height)
 
 void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
+	printf("key %d\n", key);
 	if (key == 97)
 	{
 		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.35;
@@ -47,13 +48,13 @@ void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 	}
 	else if (key == 119)
 	{
-		*tmp_x = cos(data->rotationAngle) * 0.35;
-		*tmp_y = sin(data->rotationAngle) * 0.35;
+		*tmp_x = cos(data->rotationAngle) * 0.5;
+		*tmp_y = sin(data->rotationAngle) * 0.5;
 	}
 	else if (key == 115)
 	{
-		*tmp_x = -cos(data->rotationAngle) * 0.35;
-		*tmp_y = -sin(data->rotationAngle) * 0.35;
+		*tmp_x = -cos(data->rotationAngle) * 0.5;
+		*tmp_y = -sin(data->rotationAngle) * 0.5;
 	}
 	return ;
 }
