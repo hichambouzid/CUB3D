@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/21 23:48:16 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/22 00:00:23 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,16 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	{
 		if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
 			break ;
-		if (data->map[(int)((b_tmp + (15 / CUB_SIZE)) / CUB_SIZE)][(int)((a_tmp +  (15 / CUB_SIZE))/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == '1')
 			j = 0.001;
-		if (data->map[(int)((b_tmp - (15 / CUB_SIZE)) / CUB_SIZE)][(int)((a_tmp -  (15 / CUB_SIZE))/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1')
 			j = 0.001;
-		if (data->map[(int)((b_tmp + (15 / CUB_SIZE)) / CUB_SIZE)][(int)((a_tmp -  (15 / CUB_SIZE))/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp - 0.5)/ CUB_SIZE)] == '1')
 			j = 0.001;
-		b_tmp += (sin(Angle) * 10) / 64;
-		a_tmp += (cos(Angle) * 10) / 64;
+		if (data->map[(int)((b_tmp - 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1')
+			j = 0.001;
+		b_tmp += (sin(Angle) * j) * 5;
+		a_tmp += (cos(Angle) *j) * 5;
 	}
 	*v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
 	while (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
