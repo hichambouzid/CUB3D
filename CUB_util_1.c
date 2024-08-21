@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/17 21:23:18 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:36:13 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	draw_walls(t_data *data, float height_wall, float x)
 	
 	while (i <= end_y)
 	{	
-		put_pixel_to_image1(data, x, start_y, mlx_get_color(data, x_text, 20 * y_text / height_wall));
+		put_pixel_to_image1(data, x, start_y, mlx_get_color(data, x_text, CUB_SIZE * y_text / height_wall));
 		y_text++;
 		start_y++;
 		i++;

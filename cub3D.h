@@ -13,8 +13,8 @@
 #include <string.h>
 # define FOV 60
 # define FOV_RD (FOV * M_PI / 180)
-# define CUB_SIZE 20
-# define WIDTH 1600
+# define CUB_SIZE 64
+# define WIDTH 1000
 # define HEIGHT 900
 
 typedef enum UPCODE

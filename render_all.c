@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/17 19:00:31 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:43:09 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ int	check_coler(t_data *data, int x, int y)
 
 int	increment_x_y(t_data *data, float x, float y, float Angle)
 {
-	if (x > 1 && ((data->map[(int)(y / 20)][(int)((x / 20) + ((cos(Angle)
+	if (x > 1 && ((data->map[(int)(y / CUB_SIZE)][(int)((x / CUB_SIZE) + ((cos(Angle)
 					* 0.05) * 0.4))] != '1') || data->map[(int)(y
-				/ 20)][(int)((x / 20) - ((cos(Angle) * 0.05) * 0.4))] != '1'))
+				/ CUB_SIZE)][(int)((x / CUB_SIZE) - ((cos(Angle) * 0.05) * 0.4))] != '1'))
 		return (0);
 	return (1);
 }
 
 int	check_vr_hr(t_data *data, float x, float y, float Angle)
 {
-	if (data->map[(int)(y / 20)][(int)(x / 20)] == '1')
+	if (data->map[(int)(y / CUB_SIZE)][(int)(x / CUB_SIZE)] == '1')
 		return (increment_x_y(data, x, y, Angle));
-	else if (data->map[((int)((y / 20) - 1))][((int)(x / 20) + 1)] == '1')
+	else if (data->map[((int)((y / CUB_SIZE) - 1))][((int)(x / CUB_SIZE) + 1)] == '1')
 		return (increment_x_y(data, x + 1, y - 1, Angle));
 	return (increment_x_y(data, x - 1, y + 1, Angle));
 }
@@ -47,27 +47,27 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	float	save_a;
 	float	save_b;
 
-	a_tmp = 11 + (data->f * 20);
-	b_tmp = 11 + (data->z * 20);
-	save_a = 11 + (data->f * 20);
-	save_b = 11 + (data->z * 20);
+	a_tmp = 35 + (data->f * CUB_SIZE);
+	b_tmp = 35 + (data->z * CUB_SIZE);
+	save_a = 35 + (data->f * CUB_SIZE);
+	save_b = 35 + (data->z * CUB_SIZE);
 	while (1)
 	{
-		if (data->map[(int)(b_tmp / 20)][(int)(a_tmp / 20)] == '1')
+		if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
 			break ;
 		b_tmp += (sin(Angle) * 0.05) * 5;
 		a_tmp += (cos(Angle) * 0.05) * 5;
 	}
 	*v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
-	while (data->map[(int)(b_tmp / 20)][(int)(a_tmp / 20)] == '1')
+	while (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
 	{
 		b_tmp -= (sin(Angle) * 0.05) * 2;
 		a_tmp -= (cos(Angle) * 0.05) * 2;
 	}
 	if (*v_f == 1)
-		data->params->texture_offset = fmod(a_tmp , 20);
+		data->params->texture_offset = fmod(a_tmp , CUB_SIZE);
 	else
-		data->params->texture_offset = fmod(b_tmp  , 20);
+		data->params->texture_offset = fmod(b_tmp  , CUB_SIZE);
 	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
 }
 

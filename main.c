@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/17 18:16:16 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:31:31 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int	main(int ac, char **av)
 	data->rotationAngle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->params->floor = 0X404040;
 	init_window(data);
-	data->params->north = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/north.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
-	data->params->south = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/south.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
-	data->params->west = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/west.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
-	data->params->east = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/east.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->north = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/serraoui1.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->south = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/serraoui1.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->west = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/serraoui1.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
+	data->params->east = mlx_get_data_addr(mlx_xpm_file_to_image(data->mlx, "textures/serraoui1.xpm", &c, &v), &bits_per_pixel, &data->params->linelenght, &endian);
 	printf("----> %d\n", c);
 	printf("----> %d\n", v);
 	data->z = data->y;
