@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/21 16:31:31 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 13:26:05 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ int	main(int ac, char **av)
 	printf("----> %d\n", v);
 	data->z = data->y;
 	data->f = data->x;
+	data->map = map_resize(data->map);
+	for (int i = 0; data->map[i]; i++)
+		{
+			printf("%s", data->map[i]);
+			printf("$\n");
+		}
 	render(data);
 	while (1)
 	{

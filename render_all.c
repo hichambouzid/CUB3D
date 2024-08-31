@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/22 00:00:23 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 13:32:48 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,17 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	save_b = 32 + (data->z * CUB_SIZE);
 	while (1)
 	{
-		if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
+		if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == ' ' || data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == '1')
 			break ;
-		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == '1' || data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == ' ')
 			j = 0.001;
-		if (data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1' || data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == ' ')
 			j = 0.001;
-		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp - 0.5)/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == '1' || data->map[(int)((b_tmp + 0.5) / CUB_SIZE)][(int)((a_tmp + 0.5)/ CUB_SIZE)] == ' ')
 			j = 0.001;
-		if (data->map[(int)((b_tmp - 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1')
+		if (data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp - 0.5)/ CUB_SIZE)] == ' ' || data->map[(int)((b_tmp) / CUB_SIZE)][(int)((a_tmp - 0.5)/ CUB_SIZE)] == '1')
+			j = 0.001;
+		if (data->map[(int)((b_tmp - 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == '1' || data->map[(int)((b_tmp - 0.5) / CUB_SIZE)][(int)((a_tmp)/ CUB_SIZE)] == ' ')
 			j = 0.001;
 		b_tmp += (sin(Angle) * j) * 5;
 		a_tmp += (cos(Angle) *j) * 5;
