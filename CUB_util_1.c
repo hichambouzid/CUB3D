@@ -56,7 +56,7 @@ void	draw_ceiling(t_data *data, float end_y, float x)
 	start_y = 0;
 	while (start_y < HEIGHT / 2)
 	{
-		put_pixel_to_image1(data, x, start_y, 0x00CCCC);
+		put_pixel_to_image1(data, x, start_y, data->params->ceiling);
 		start_y++;
 	}
 }
