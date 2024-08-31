@@ -23,15 +23,19 @@ int	key_hook(int key, t_data *data)
 {
 	if (key == 65307)
 	{
+		ft_free_table(data->map);
+		mlx_destroy_image(data->mlx, data->mlx_3d);
+		free(data->params);
 		mlx_destroy_window(data->mlx, data->mlx_win);
+		free(data);
 		exit(1);
 	}
 	if (key == 97 || key == 100 || key == 119 || key == 115)
 		allow_render(data, key);
 	else if (key == 65361)
-		change_angle(&data->rotationAngle, -1, data);
+		change_angle(&data->rotation_angle, -1, data);
 	else if (key == 65363)
-		change_angle(&data->rotationAngle, 1, data);
+		change_angle(&data->rotation_angle, 1, data);
 	else if (key == 65505)
 	{
 		if (data->flag == 0)
