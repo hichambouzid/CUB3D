@@ -98,10 +98,12 @@ int	valid_param_helper(char *p, char **param, int *color, int is_color)
 	size_t	i;
 	int		c;
 
-	if (!is_color)
+	if (!is_color && !color)
 		(*param) = ft_strdup(p);
 	else
 	{
+		if (is_color < 4)
+			return (0);
 		rgb = ft_split(p, ',');
 		i = -1;
 		if (count_words(p, ',') != 3)

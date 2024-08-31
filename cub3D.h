@@ -13,8 +13,8 @@
 #include <string.h>
 # define FOV 60
 # define FOV_RD (FOV * M_PI / 180)
-# define CUB_SIZE 20
-# define WIDTH 1600
+# define CUB_SIZE 64
+# define WIDTH 1000
 # define HEIGHT 900
 
 typedef enum UPCODE
@@ -34,6 +34,8 @@ typedef struct s_params
 	char	*west;
 	char	*east;
 	int		floor;
+	int linelenght;
+	float	texture_offset;
 	int		ceiling;
 }		t_params;
 
@@ -48,6 +50,7 @@ typedef struct data
 	int			line_lenght;
 	char		*str;
 	char		*str1;
+	char		*text;
 	char		*tmp_str;
 	float		x;
 	float		y;
@@ -58,6 +61,10 @@ typedef struct data
 	float		flag;
 	void		*mlx_tmp;
 	t_params	*params;
+	void	*northh;
+	void	*southh;
+	void	*westt;
+	void	*eastt;
 }			t_data;
 
 typedef struct info
