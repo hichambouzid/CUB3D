@@ -69,7 +69,8 @@ int	main(int ac, char **av)
 		return (error("Error : Invalid number of parameters !\n"), 1);
 	init_data(&data);
 	if (!valid_map(av[1], data))
-		return (error("Error : Invalid Map !\n"), 1);
+		return (error("Error : Invalid Map !\n"),
+			ft_free_table(data->map), free(data), 1);
 	get_cordinate(data);
 	if (!init_window(data))
 		return (1);
