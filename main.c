@@ -12,18 +12,21 @@
 
 #include "cub3D.h"
 
-void	init_window(t_data *data)
+int	init_window(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
 	{
 		ft_putstr_fd("error: can't initialise windows\n", 2);
-		exit(1);
+		return (0);
 	}
+	if (!valid_textures(data))
+		return (0);
 	data->mlx_win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
 	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	get_img_data(data, WIDTH, HEIGHT);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_3D, 0, 0);
+	return (1);
 }
 
 int	get_coler(char c)
@@ -93,19 +96,13 @@ int	main(int ac, char **av)
 	if (!valid_map(av[1], data))
 		return (error("Error : Invalid Map !\n"), 1);
 	get_cordinate(data);
-	init_window(data);
-	if (!valid_textures(data))
+	if (!init_window(data))
 		return (1);
 	data->projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
 	data->rotationAngle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->z = data->y;
 	data->f = data->x;
 	data->map = map_resize(data->map);
-	// for (int i = 0; data->map[i]; i++)
-	// {
-	// 	printf("%s", data->map[i]);
-	// 	printf("$\n");
-	// }
 	render(data);
 	while (1)
 	{

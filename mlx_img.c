@@ -35,7 +35,6 @@ void	get_img_data(t_data *data, int width, int height)
 
 void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
-	printf("key %d\n", key);
 	if (key == 97)
 	{
 		*tmp_x = cos(data->rotationAngle - M_PI_2) * 0.35;

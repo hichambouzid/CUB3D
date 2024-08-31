@@ -8,13 +8,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 # include "get_next_line/get_next_line.h"
 
-#include <string.h>
 # define FOV 60
 # define FOV_RD (FOV * M_PI / 180)
 # define CUB_SIZE 64
-# define WIDTH 1000
+# define WIDTH 1200
 # define HEIGHT 900
 
 typedef enum UPCODE
@@ -61,10 +61,6 @@ typedef struct data
 	float		flag;
 	void		*mlx_tmp;
 	t_params	*params;
-	void	*northh;
-	void	*southh;
-	void	*westt;
-	void	*eastt;
 }			t_data;
 
 typedef struct info
@@ -81,7 +77,7 @@ typedef struct collector
 	void	*garbage[10000];
 }			t_collector;
 
-void		init_window(t_data *data);
+int		init_window(t_data *data);
 int			ft_close(int key);
 int			key_hook(int key, t_data *data);
 int			processinput(t_data *data);
@@ -118,4 +114,5 @@ int			ft_allwhitespace(char *s);
 char		**map_resize(char **map);
 void		put_pixel_to_image1(t_data *data, int x, int y, int coler);
 int			mlx_get_color(t_data *data, int x, int y);
+int			valid_textures(t_data *data);
 #endif
