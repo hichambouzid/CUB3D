@@ -6,11 +6,11 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:16:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:22:12 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	put_pixel_to_image(t_data *data, int x, int y, int coler)
 {

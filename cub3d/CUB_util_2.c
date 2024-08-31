@@ -6,11 +6,11 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/17 17:07:00 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:21:56 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	draw_fake_3d(t_data *data, float hit, float x)
 {

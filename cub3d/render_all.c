@@ -6,11 +6,11 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 15:55:41 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:22:18 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	increment_x_y(t_data *data, float x, float y, float Angle)
 {
