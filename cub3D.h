@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 21:17:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:17:08 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:32:24 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,6 @@ void			put_pixel_to_image1(t_data *data, int x, int y, int coler);
 int				mlx_get_color(t_data *data, int x, int y);
 int				valid_textures(t_data *data);
 void			ft_free_map(t_data	*data);
+int				valid_color_pre(char *p, int is_color);
 
 #endif

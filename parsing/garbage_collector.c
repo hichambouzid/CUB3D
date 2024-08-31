@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_collector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:10:24 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:12:07 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:31:46 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_free(char **ptr)
 
 void	ft_free_table(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!tab && !(*tab))
@@ -70,4 +70,23 @@ int	ft_strcmp(const char *s1, const char *s2)
 		i++;
 	}
 	return (0);
+}
+
+int	valid_color_pre(char *p, int is_color)
+{
+	int		c_count;
+	int		i;
+
+	c_count = 0;
+	if (is_color < 4)
+		return (0);
+	i = 0;
+	while (p && p[i])
+	{
+		if (',' == p[i++])
+			c_count++;
+	}
+	if (c_count != 2)
+		return (0);
+	return (1);
 }

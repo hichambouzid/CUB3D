@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serraoui <serraoui@student.42.fr>          #+#  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-12 18:48:47 by serraoui          #+#    #+#             */
-/*   Updated: 2024-08-12 18:48:47 by serraoui         ###   ########.fr       */
+/*   Created: 2024/08/12 18:48:47 by serraoui          #+#    #+#             */
+/*   Updated: 2024/08/31 21:31:23 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,12 @@ int	valid_param_helper(char *p, char **param, int *color, int is_color)
 	char	**rgb;
 	size_t	i;
 	int		c;
-	int		c_count;
 
 	if (!is_color && !color)
 		(*param) = ft_strdup(p);
 	else
 	{
-		c_count = 0;
-		if (is_color < 4)
-			return (0);
-		i = 0;
-		while (p && p[i])
-		{
-			if (',' == p[i++])
-				c_count++;
-		}
-		if (c_count != 2)
+		if (!valid_color_pre(p, is_color))
 			return (0);
 		rgb = ft_split(p, ',');
 		i = -1;

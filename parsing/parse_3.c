@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: serraoui <serraoui@student.42.fr>          #+#  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-13 21:14:02 by serraoui          #+#    #+#             */
-/*   Updated: 2024-08-13 21:14:02 by serraoui         ###   ########.fr       */
+/*   Created: 2024/08/13 21:14:02 by serraoui          #+#    #+#             */
+/*   Updated: 2024/08/31 21:31:59 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../cub3D.h"
 
-int ft_iswhitespace(int c)
+int	ft_iswhitespace(int c)
 {
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
