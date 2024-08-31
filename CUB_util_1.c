@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 13:18:23 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/12 14:26:02 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:36:13 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	change_angle(float *angle, int flag, t_data *data)
 {
 	if (flag == 1)
 	{
-		*angle += 5 * (M_PI / 180);
+		*angle += (5 * (M_PI / 180));
 		if (*angle > 2 * M_PI)
-			*angle = 0;
+			*angle -= (2 * M_PI);
 	}
 	else
 	{
-		*angle -= 4 * (M_PI / 180);
+		*angle -= (5 * (M_PI / 180));
 		if (*angle < 0)
-			*angle = 2 * M_PI;
+			*angle += (2 * M_PI);
 	}
 	render(data);
 }
@@ -56,34 +56,58 @@ void	draw_ceiling(t_data *data, float end_y, float x)
 	start_y = 0;
 	while (start_y < HEIGHT / 2)
 	{
-		put_pixel_to_image1(data, x, start_y, 0x00FF0000);
+		put_pixel_to_image1(data, x, start_y, 0x00CCCC);
 		start_y++;
 	}
+}
+
+int  mlx_get_color(t_data *data, int x, int y)
+{
+	char *coler;
+	int pixel_coler;
+
+	coler = (data->text + (y * data->params->linelenght + 4 * x));
+
+	pixel_coler = *(unsigned int *)coler;
+	return (pixel_coler);
 }
 
 void	draw_walls(t_data *data, float height_wall, float x)
 {
 	float	start_y;
 	float	end_y;
+	int	y_text;
+	int x_text;
+	// float increment;
 	int		i;
 
 	i = 0;
-	start_y = height_wall / 2;
-	end_y = ((HEIGHT - height_wall) / 2);
-	if (height_wall >= HEIGHT)
+	// start_y = height_wall / 2;
+	// end_y = ((HEIGHT - height_wall) / 2);
+	y_text = 0;
+	if (height_wall > HEIGHT)
 	{
 		start_y = 0;
 		end_y = HEIGHT;
+		// y_text = (20  * end_y / height_wall);
+		y_text = (height_wall - HEIGHT) / 2;
+		printf("y---> %d\n", y_text);
 	}
 	else
 	{
 		start_y = (HEIGHT - height_wall) / 2;
 		end_y = height_wall;
 	}
+	x_text = data->params->texture_offset;
+	// printf("------------------> %d\n", x_text);
+	// increment = 20 / end_y;
+	
 	while (i <= end_y)
-	{
-		put_pixel_to_image1(data, x, start_y, 0);
+	{	
+		put_pixel_to_image1(data, x, start_y, mlx_get_color(data, x_text, CUB_SIZE * y_text / height_wall));
+		y_text++;
 		start_y++;
 		i++;
 	}
+	// printf("----%f---> %d\n",height_wall, y_text);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   CUB_util_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hibouzid <hibouzid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 16:59:25 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/11 22:17:40 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:22:37 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,27 @@ void	get_cordinate(t_data *data)
 	}
 	data->x = 0;
 	data->y = 0;
+}
+
+int	wall_check(t_data *data, float z, float f)
+{
+	int	j;
+	int	i;
+
+	j = z * 20 + 8;
+	while (j < (z * 20) + 14)
+	{
+		i = f * 20 + 8;
+		while (i < (f * 20) + 14)
+		{
+			if (data->map[(int)(j / 20)][(int)(i / 20)] == '1')
+			{
+				printf("hee hee ]\n");
+				return (0);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (1);
 }
