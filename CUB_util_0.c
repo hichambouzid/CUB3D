@@ -71,10 +71,7 @@ int	wall_check(t_data *data, float z, float f)
 		while (i < (f * 20) + 14)
 		{
 			if (data->map[(int)(j / 20)][(int)(i / 20)] == '1')
-			{
-				printf("hee hee ]\n");
 				return (0);
-			}
 			i++;
 		}
 		j++;

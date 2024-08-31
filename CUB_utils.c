@@ -39,16 +39,17 @@ char	**map_resize(char **map)
 	new = (char **)ft_calloc(10000, sizeof(char *), NULL);
 	len = ft_strleen(map);
 	i = 0;
-	new[i] = get_line(ft_strlen(map[0]));
+	new[i++] = get_line(ft_strlen(map[0]));
 	tmp = get_line(1e3);
 	while (j < len)
 	{
-		map[j] = ft_strjoin(map[i], tmp);
+		map[j] = ft_strjoin(map[j], tmp);
 		new[i] = ft_strdup(map[j]);
 		i++;
 		j++;
 	}
 	free(tmp);
+	ft_free_table(map);
 	new[i] = get_line(1e3);
 	return (new);
 }
@@ -78,4 +79,31 @@ void	draw_walls(t_data *data, float height_wall, float x)
 	while (i++ <= end_y)
 		put_pixel_to_image1(data, x, start_y++, mlx_get_color(data, x_text,
 				CUB_SIZE * y_text++ / height_wall));
+}
+
+int	valid_texture(t_data *data, char **param)
+{
+	int		c;
+	int		v;
+	int		bpp;
+	int		endian;
+	void	*img;
+
+	c = 0;
+	v = 0;
+	img = mlx_xpm_file_to_image(data->mlx, *param, &c, &v);
+	if (!img)
+		return (printf("Error : Invalid texture file %s !\n", *param), 0);
+	free(*param);
+	(*param) = mlx_get_data_addr(img, &bpp, &data->params->linelenght, &endian);
+	return (free(img), 1);
+}
+
+int	valid_textures(t_data *data)
+{
+	if (valid_texture(data, &data->params->north) && valid_texture(data,
+			&data->params->south) && valid_texture(data, &data->params->west)
+		&& valid_texture(data, &data->params->east))
+		return (1);
+	return (0);
 }

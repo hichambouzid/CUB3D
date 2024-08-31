@@ -59,12 +59,12 @@ void	draw_fov(t_data *data)
 	float	f;
 
 	f = 0;
-	tmp = data->rotationAngle - ((30 * M_PI) / 180);
-	while (tmp <= data->rotationAngle + ((30 * M_PI) / 180))
+	tmp = data->rotation_angle - ((30 * M_PI) / 180);
+	while (tmp <= data->rotation_angle + ((30 * M_PI) / 180))
 	{
 		hit = render_line(data, tmp, &v_h);
 		data->text = get_appropriate_texture(data, tmp, v_h);
-		data->angle = tmp - data->rotationAngle;
+		data->angle = tmp - data->rotation_angle;
 		draw_fake_3d(data, hit * cos(nor_angle(data->angle)), f);
 		tmp += FOV_RD / WIDTH;
 		f++;

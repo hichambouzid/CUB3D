@@ -31,16 +31,16 @@ void	*ft_calloc(size_t count, size_t size, t_collector *collector)
 	return (ptr);
 }
 
-void	ft_free(t_collector *collector)
+void	ft_free(char **ptr)
 {
 	int	i;
 
 	i = 0;
-	if (i == 0)
-		return (free(collector));
-	while (i < collector->count)
+	if (ft_strleen(ptr) == 0)
+		return (free(ptr));
+	while (i < ft_strleen(ptr))
 	{
-		free(collector->garbage[i]);
+		free(ptr[i]);
 		i++;
 	}
 	return ;

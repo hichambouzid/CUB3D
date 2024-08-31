@@ -83,9 +83,9 @@ float	render_line(t_data *data, float Angle, int *v_f)
 
 void	render(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->mlx_3D);
-	data->mlx_3D = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	mlx_destroy_image(data->mlx, data->mlx_3d);
+	data->mlx_3d = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	get_img_data(data, WIDTH, HEIGHT);
 	draw_fov(data);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_3D, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_3d, 0, 0);
 }

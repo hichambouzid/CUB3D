@@ -97,12 +97,22 @@ int	valid_param_helper(char *p, char **param, int *color, int is_color)
 	char	**rgb;
 	size_t	i;
 	int		c;
+	int		c_count;
 
 	if (!is_color && !color)
 		(*param) = ft_strdup(p);
 	else
 	{
+		c_count = 0;
 		if (is_color < 4)
+			return (0);
+		i = 0;
+		while (p && p[i])
+		{
+			if (',' == p[i++])
+				c_count++;
+		}
+		if (c_count != 2)
 			return (0);
 		rgb = ft_split(p, ',');
 		i = -1;
