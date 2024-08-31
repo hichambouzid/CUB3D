@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 15:57:31 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:15:39 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	main(int ac, char **av)
 	init_data(&data);
 	if (!valid_map(av[1], data))
 		return (error("Error : Invalid Map !\n"),
-			ft_free_table(data->map), free(data), 1);
+			ft_free_map(data), 1);
 	get_cordinate(data);
 	if (!init_window(data))
 		return (1);

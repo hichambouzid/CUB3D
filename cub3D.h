@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/31 21:17:06 by hibouzid          #+#    #+#             */
+/*   Updated: 2024/08/31 21:17:08 by hibouzid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -116,4 +128,6 @@ char			**map_resize(char **map);
 void			put_pixel_to_image1(t_data *data, int x, int y, int coler);
 int				mlx_get_color(t_data *data, int x, int y);
 int				valid_textures(t_data *data);
+void			ft_free_map(t_data	*data);
+
 #endif

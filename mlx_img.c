@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/21 23:46:44 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/08/31 21:16:45 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,19 @@ void	allow_render(t_data *data, int key)
 	data->f += tmp_x;
 	render(data);
 	return ;
+}
+
+void	ft_free_map(t_data	*data)
+{
+	ft_free_table(data->map);
+	if (data->params->north)
+		free(data->params->north);
+	if (data->params->south)
+		free(data->params->south);
+	if (data->params->west)
+		free(data->params->west);
+	if (data->params->east)
+		free(data->params->east);
+	free(data->params);
+	free(data);
 }
