@@ -115,4 +115,7 @@ void		color_rgb(int i, int *color, int c);
 void		ft_free_table(char **tab);
 int			ft_iswhitespace(int c);
 int			ft_allwhitespace(char *s);
+char		**map_resize(char **map);
+void		put_pixel_to_image1(t_data *data, int x, int y, int coler);
+int			mlx_get_color(t_data *data, int x, int y);
 #endif
