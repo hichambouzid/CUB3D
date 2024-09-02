@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 21:17:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:32:24 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:23:09 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_params
 	char		*south;
 	char		*west;
 	char		*east;
+	void		*northh;
+	void		*southh;
+	void		*westt;
+	void		*eastt;
 	int			floor;
 	int			linelenght;
 	float		texture_offset;

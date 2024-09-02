@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:11:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:22:12 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:45:19 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	change_cordinate(t_data *data, int key, float *tmp_x, float *tmp_y)
 {
 	if (key == 97)
 	{
-		*tmp_x = cos(data->rotation_angle - M_PI_2) * 0.35;
-		*tmp_y = sin(data->rotation_angle - M_PI_2) * 0.35;
+		*tmp_x = cos(data->rotation_angle - M_PI_2) * 0.5;
+		*tmp_y = sin(data->rotation_angle - M_PI_2) * 0.5;
 	}
 	else if (key == 100)
 	{
-		*tmp_x = cos(data->rotation_angle + M_PI_2) * 0.35;
-		*tmp_y = sin(data->rotation_angle + M_PI_2) * 0.35;
+		*tmp_x = cos(data->rotation_angle + M_PI_2) * 0.5;
+		*tmp_y = sin(data->rotation_angle + M_PI_2) * 0.5;
 	}
 	else if (key == 119)
 	{

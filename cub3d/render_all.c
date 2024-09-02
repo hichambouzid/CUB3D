@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:22:18 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:44:39 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	increment_x_y(t_data *data, float x, float y, float Angle)
 {
 	if (x > 1 && ((data->map[(int)(y / CUB_SIZE)][(int)((x / CUB_SIZE)
-			+ ((cos(Angle) * 0.05) * 0.4))] != '1') || data->map[(int)(y
+			+ ((cos(Angle) * 0.05) * 0.01))] != '1') || data->map[(int)(y
 				/ CUB_SIZE)][(int)((x / CUB_SIZE) - ((cos(Angle) * 0.05)
-					* 0.4))] != '1'))
+					* 0.01))] != '1'))
 		return (0);
 	return (1);
 }
@@ -70,8 +70,8 @@ float	render_line(t_data *data, float Angle, int *v_f)
 			|| data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp
 				/ CUB_SIZE)] == '1')
 			break ;
-		b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 5;
-		a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 5;
+		b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 8;
+		a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 8;
 	}
 	*v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
 	if (*v_f == 1)

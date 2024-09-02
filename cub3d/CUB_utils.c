@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 13:10:46 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:22:01 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:39:38 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,30 +80,30 @@ void	draw_walls(t_data *data, float height_wall, float x)
 		put_pixel_to_image1(data, x, start_y++, mlx_get_color(data, x_text,
 				CUB_SIZE * y_text++ / height_wall));
 }
-
-int	valid_texture(t_data *data, char **param)
+int	valid_texture(t_data *data, char **param, void **img)
 {
 	int		c;
 	int		v;
 	int		bpp;
 	int		endian;
-	void	*img;
+	// void	*img;
 
 	c = 0;
 	v = 0;
-	img = mlx_xpm_file_to_image(data->mlx, *param, &c, &v);
-	if (!img)
+	*img = mlx_xpm_file_to_image(data->mlx, *param, &c, &v);
+	if (!*img)
 		return (printf("Error : Invalid texture file %s !\n", *param), 0);
 	free(*param);
-	(*param) = mlx_get_data_addr(img, &bpp, &data->params->linelenght, &endian);
-	return (free(img), 1);
+	
+	(*param) = mlx_get_data_addr(*img, &bpp, &data->params->linelenght, &endian);
+	return (1);
 }
 
 int	valid_textures(t_data *data)
 {
-	if (valid_texture(data, &data->params->north) && valid_texture(data,
-			&data->params->south) && valid_texture(data, &data->params->west)
-		&& valid_texture(data, &data->params->east))
+	if (valid_texture(data, &data->params->north, &data->params->northh) && valid_texture(data,
+			&data->params->south, &data->params->southh) && valid_texture(data, &data->params->east, &data->params->eastt) &&
+				valid_texture(data, &data->params->west, &data->params->westt))
 		return (1);
 	return (0);
 }
