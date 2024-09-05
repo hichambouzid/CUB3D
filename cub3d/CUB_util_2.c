@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/02 11:39:42 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/05 19:29:35 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	draw_fake_3d(t_data *data, float hit, float x)
 
 	i = 0;
 	height_wall = (CUB_SIZE / hit) * data->projection_plan;
+	printf("%f\n", height_wall);
 	draw_ceiling(data, hit, x);
 	draw_walls(data, height_wall, x);
 	if (x == WIDTH)

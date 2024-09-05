@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/02 11:44:39 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:32:58 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	float	b_tmp;
 	float	save_a;
 	float	save_b;
-
+	float distence;
+	
 	a_tmp = 32 + (data->f * CUB_SIZE);
 	b_tmp = 32 + (data->z * CUB_SIZE);
 	save_a = 32 + (data->f * CUB_SIZE);
@@ -78,7 +79,13 @@ float	render_line(t_data *data, float Angle, int *v_f)
 		data->params->texture_offset = fmod(a_tmp, CUB_SIZE);
 	else
 		data->params->texture_offset = fmod(b_tmp, CUB_SIZE);
-	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	// printf("---> %d\n", raycasting(data, Angle));
+	// printf("==================================\n");
+	// printf("%f\n", sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	// return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	distence = raycasting(data, Angle);
+	// printf("----> %f\n", distence);
+	return (distence);
 }
 
 void	render(t_data *data)

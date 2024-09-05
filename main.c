@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/08/31 21:15:39 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:38:06 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	main(int ac, char **av)
 	if (!init_window(data))
 		return (1);
 	data->projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
+	// printf("%f\n", data->projection_plan);
 	data->rotation_angle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->z = data->y;
 	data->f = data->x;
