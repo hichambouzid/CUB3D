@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:19:15 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/05 19:51:51 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/05 23:10:32 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int raycasting(t_data *data, float ang)
         {
             a = in_x;
             // b = tmp_b + (a - tmp_a) * (dy / dx);
-            in_x += deltax * 0.4;
-			tmp_a += step_x * 0.4;
+            in_x += deltax * 0.04;
+			tmp_a += step_x * 0.04;
         }
         else
         {
             b = in_y;
-            in_y += deltay * 0.4;
-            tmp_b += step_y * 0.4;
+            in_y += deltay * 0.04;
+            tmp_b += step_y * 0.04;
         }
     }
 	if (in_x <= in_y)

@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/05 18:32:58 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/05 23:18:42 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	float	b_tmp;
 	float	save_a;
 	float	save_b;
-	float distence;
+	// float distence;
 	
 	a_tmp = 32 + (data->f * CUB_SIZE);
 	b_tmp = 32 + (data->z * CUB_SIZE);
@@ -71,8 +71,8 @@ float	render_line(t_data *data, float Angle, int *v_f)
 			|| data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp
 				/ CUB_SIZE)] == '1')
 			break ;
-		b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 8;
-		a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 8;
+		b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
+		a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
 	}
 	*v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
 	if (*v_f == 1)
@@ -82,10 +82,10 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	// printf("---> %d\n", raycasting(data, Angle));
 	// printf("==================================\n");
 	// printf("%f\n", sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
-	// return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
-	distence = raycasting(data, Angle);
+	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	// distence = raycasting(data, Angle);
 	// printf("----> %f\n", distence);
-	return (distence);
+	// return (distence);
 }
 
 void	render(t_data *data)
