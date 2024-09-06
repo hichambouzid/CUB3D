@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:19:15 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/05 23:10:32 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/06 18:17:06 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 // #include <math.h>
 #include "cub3D.h"
 
-int raycasting(t_data *data, float ang)
+int raycasting(t_data *data, float ang, int *v_f)
 {
     // float angle = data->angle;
     float dx = cos(ang);
@@ -26,7 +26,7 @@ int raycasting(t_data *data, float ang)
     int step_x, step_y;
     float deltax, deltay;
     float in_x, in_y;
-    float distx, disty;
+    // float distx, disty;
     // int map_x, map_y;
 
 
@@ -53,38 +53,41 @@ int raycasting(t_data *data, float ang)
         step_y = 1;
         in_y = (ceil(tmp_b) - tmp_b) * deltay;
     }
-    distx = (in_x - tmp_a) / fabs(dx);
-    disty = (in_y - tmp_b) / fabs(dy);
-	if (distx < 0)
-		distx *=-1;
-	if (disty < 0)
-		disty *=-1;
-
-
-    while ((data->map[(int)(tmp_b / CUB_SIZE)][(int)(tmp_a / CUB_SIZE)] != '1' &&
-		data->map[(int)(tmp_b / CUB_SIZE)][(int)(tmp_a / CUB_SIZE)] != ' '))
+    while ((data->map[(int)floor(tmp_b / CUB_SIZE)][(int)floor(tmp_a / CUB_SIZE)] != '1' &&
+		data->map[(int)floor(tmp_b / CUB_SIZE)][(int)floor(tmp_a / CUB_SIZE)] != ' '))
 	 {
-        // map_x = (int)(tmp_a / CUB_SIZE) ;
-        // map_y = (int)(tmp_b / CUB_SIZE);
-		// printf("-=-= %d\n", map_y);
-		// printf("-=-= %d\n", map_x);
-        if (in_x <= in_y)
+
+        if (in_x < in_y)
         {
-            a = in_x;
-            // b = tmp_b + (a - tmp_a) * (dy / dx);
-            in_x += deltax * 0.04;
-			tmp_a += step_x * 0.04;
+            in_x += deltax;
+			tmp_a += step_x;
+			 if (step_x == 1)
+			 	*v_f = 1;
+			else
+				*v_f = 2;
+
         }
         else
         {
-            b = in_y;
-            in_y += deltay * 0.04;
-            tmp_b += step_y * 0.04;
+            // b = in_y;
+            in_y += deltay;
+            tmp_b += step_y;
+			if (step_y == 1)
+				*v_f = 3;
+			else
+				*v_f = 4;
         }
     }
-	if (in_x <= in_y)
-		return (in_x);
-    return in_y;
+	*v_f = check_vr_hr(data, tmp_a, tmp_b, ang);
+	if (*v_f == 1)
+		data->params->texture_offset = fmod(tmp_a, CUB_SIZE);
+	else
+		data->params->texture_offset = fmod(tmp_b, CUB_SIZE);
+	// if ()
+	// printf("%f\n", data->params->texture_offset);
+	return ( sqrtf(powf(a - tmp_a ,2) +
+		powf(b - tmp_b,2)));
+    // return in_y;
 }
 
 

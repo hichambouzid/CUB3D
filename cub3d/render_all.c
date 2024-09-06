@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:52:42 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/05 23:18:42 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:57:26 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,34 +55,39 @@ float	change_speed(t_data *data, float x, float y)
 
 float	render_line(t_data *data, float Angle, int *v_f)
 {
-	float	a_tmp;
-	float	b_tmp;
-	float	save_a;
-	float	save_b;
-	// float distence;
+	// float	a_tmp;
+	// float	b_tmp;
+	// float	save_a;
+	// float	save_b;
+	float distence;
 	
-	a_tmp = 32 + (data->f * CUB_SIZE);
-	b_tmp = 32 + (data->z * CUB_SIZE);
-	save_a = 32 + (data->f * CUB_SIZE);
-	save_b = 32 + (data->z * CUB_SIZE);
-	while (1)
-	{
-		if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == ' '
-			|| data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp
-				/ CUB_SIZE)] == '1')
-			break ;
-		b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
-		a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
-	}
-	*v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
-	if (*v_f == 1)
-		data->params->texture_offset = fmod(a_tmp, CUB_SIZE);
-	else
-		data->params->texture_offset = fmod(b_tmp, CUB_SIZE);
-	// printf("---> %d\n", raycasting(data, Angle));
+	// a_tmp = 32 + (data->f * CUB_SIZE);
+	// b_tmp = 32 + (data->z * CUB_SIZE);
+	// save_a = 32 + (data->f * CUB_SIZE);
+	// save_b = 32 + (data->z * CUB_SIZE);
+	// while (1)
+	// {
+	// 	if (data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp / CUB_SIZE)] == ' '
+	// 		|| data->map[(int)(b_tmp / CUB_SIZE)][(int)(a_tmp
+	// 			/ CUB_SIZE)] == '1')
+	// 		break ;
+	// 	b_tmp += (sin(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
+	// 	a_tmp += (cos(Angle) * change_speed(data, a_tmp, b_tmp)) * 2;
+	// }
+	// *v_f = check_vr_hr(data, a_tmp, b_tmp, Angle);
+	// if (*v_f == 1)
+	// 	data->params->texture_offset = fmod(a_tmp, CUB_SIZE);
+	// else
+	// 	data->params->texture_offset = fmod(b_tmp, CUB_SIZE);
+	distence =raycasting(data, Angle, v_f);
 	// printf("==================================\n");
+	// if (data->params->texture_offset <= 0)
+	// 	data->params->texture_offset = 0;
+	// if (data->params->texture_offset >= CUB_SIZE)
+	// 	data->params->texture_offset = CUB_SIZE;
+
 	// printf("%f\n", sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
-	return (sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	return (distence);
 	// distence = raycasting(data, Angle);
 	// printf("----> %f\n", distence);
 	// return (distence);
