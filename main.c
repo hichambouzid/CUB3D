@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/05 18:38:06 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/09/07 17:01:02 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 	data->rotation_angle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->z = data->y;
 	data->f = data->x;
-	data->map = map_resize(data->map);
+	// data->map = map_resize(data->map);
 	render(data);
 	processinput(data);
 	mlx_loop(data->mlx);
