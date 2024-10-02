@@ -15,9 +15,9 @@
 int	increment_x_y(t_data *data, float x, float y, float Angle)
 {
 	if (x > 1 && ((data->map[(int)(y / CUB_SIZE)][(int)((x / CUB_SIZE)
-			+ ((cos(Angle) * 0.05) * 0.01))] != '1') || data->map[(int)(y
-				/ CUB_SIZE)][(int)((x / CUB_SIZE) - ((cos(Angle) * 0.05)
-					* 0.01))] != '1'))
+					+ ((cos(Angle) * 0.05) * 0.01))] != '1')
+			|| data->map[(int)(y / CUB_SIZE)][(int)((x / CUB_SIZE)
+				- ((cos(Angle) * 0.05) * 0.01))] != '1'))
 		return (0);
 	return (1);
 }
@@ -55,12 +55,12 @@ float	change_speed(t_data *data, float x, float y)
 
 float	render_line(t_data *data, float Angle, int *v_f)
 {
+	float	distence;
+
 	// float	a_tmp;
 	// float	b_tmp;
 	// float	save_a;
 	// float	save_b;
-	float distence;
-	
 	// a_tmp = 32 + (data->f * CUB_SIZE);
 	// b_tmp = 32 + (data->z * CUB_SIZE);
 	// save_a = 32 + (data->f * CUB_SIZE);
@@ -79,14 +79,14 @@ float	render_line(t_data *data, float Angle, int *v_f)
 	// 	data->params->texture_offset = fmod(a_tmp, CUB_SIZE);
 	// else
 	// 	data->params->texture_offset = fmod(b_tmp, CUB_SIZE);
-	distence =raycasting(data, Angle, v_f);
+	distence = raycasting(data, Angle, v_f);
 	// printf("================%f==================\n", distence);
 	// if (data->params->texture_offset <= 0)
 	// 	data->params->texture_offset = 0;
 	// if (data->params->texture_offset >= CUB_SIZE)
 	// 	data->params->texture_offset = CUB_SIZE;
-
-	// printf("%f\n", sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp - save_b)), 2)));
+	// printf("%f\n", sqrtf(powf(((a_tmp - save_a)), 2) + powf(((b_tmp
+						- save_b)), 2)));
 	return ((distence));
 	// distence = raycasting(data, Angle);
 	// printf("----> %f\n", distence);

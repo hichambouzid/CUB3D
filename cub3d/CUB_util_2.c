@@ -15,7 +15,7 @@
 void	draw_fake_3d(t_data *data, float hit, float x)
 {
 	float	height_wall;
-	int 	i;
+	int		i;
 
 	i = 0;
 	height_wall = (CUB_SIZE / hit) * data->projection_plan;
@@ -41,7 +41,7 @@ float	nor_angle(float angle)
 char	*get_appropriate_texture(t_data *data, float angle, int v_h)
 {
 	(void)data;
-	(void) angle;
+	(void)angle;
 	if (v_h == 1 || v_h == 3)
 	{
 		// if ((angle > 0 && angle < M_PI) || (angle > M_PI * 2 && angle < (400

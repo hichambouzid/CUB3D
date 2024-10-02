@@ -82,28 +82,29 @@ void	draw_walls(t_data *data, float height_wall, float x)
 }
 int	valid_texture(t_data *data, char **param, void **img)
 {
-	int		c;
-	int		v;
-	int		bpp;
-	int		endian;
-	// void	*img;
+	int	c;
+	int	v;
+	int	bpp;
+	int	endian;
 
+	// void	*img;
 	c = 0;
 	v = 0;
 	*img = mlx_xpm_file_to_image(data->mlx, *param, &c, &v);
 	if (!*img)
 		return (printf("Error : Invalid texture file %s !\n", *param), 0);
 	free(*param);
-	
-	(*param) = mlx_get_data_addr(*img, &bpp, &data->params->linelenght, &endian);
+	(*param) = mlx_get_data_addr(*img, &bpp, &data->params->linelenght,
+			&endian);
 	return (1);
 }
 
 int	valid_textures(t_data *data)
 {
-	if (valid_texture(data, &data->params->north, &data->params->northh) && valid_texture(data,
-			&data->params->south, &data->params->southh) && valid_texture(data, &data->params->east, &data->params->eastt) &&
-				valid_texture(data, &data->params->west, &data->params->westt))
+	if (valid_texture(data, &data->params->north, &data->params->northh)
+		&& valid_texture(data, &data->params->south, &data->params->southh)
+		&& valid_texture(data, &data->params->east, &data->params->eastt)
+		&& valid_texture(data, &data->params->west, &data->params->westt))
 		return (1);
 	return (0);
 }

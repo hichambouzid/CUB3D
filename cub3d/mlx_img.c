@@ -72,7 +72,7 @@ void	allow_render(t_data *data, int key)
 	return ;
 }
 
-void	ft_free_map(t_data	*data)
+void	ft_free_map(t_data *data)
 {
 	ft_free_table(data->map);
 	if (data->params->north)

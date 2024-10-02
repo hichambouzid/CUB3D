@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:55:30 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/07 17:01:02 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/02 11:35:45 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,14 @@ int	main(int ac, char **av)
 		return (error("Error : Invalid number of parameters !\n"), 1);
 	init_data(&data);
 	if (!valid_map(av[1], data))
-		return (error("Error : Invalid Map !\n"),
-			ft_free_map(data), 1);
+		return (error("Error : Invalid Map !\n"), ft_free_map(data), 1);
 	get_cordinate(data);
 	if (!init_window(data))
 		return (1);
 	data->projection_plan = (WIDTH / 2) / tan(30 * M_PI / 180);
-	// printf("%f\n", data->projection_plan);
 	data->rotation_angle = get_pi_angle(data->map[(int)data->y][(int)data->x]);
 	data->z = data->y;
 	data->f = data->x;
-	// data->map = map_resize(data->map);
 	render(data);
 	processinput(data);
 	mlx_loop(data->mlx);

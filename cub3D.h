@@ -132,9 +132,9 @@ char			**map_resize(char **map);
 void			put_pixel_to_image1(t_data *data, int x, int y, int coler);
 int				mlx_get_color(t_data *data, int x, int y);
 int				valid_textures(t_data *data);
-void			ft_free_map(t_data	*data);
+void			ft_free_map(t_data *data);
 int				valid_color_pre(char *p, int is_color);
-float raycasting(t_data *data, float ang, int *v_f);
-int	check_vr_hr(t_data *data, float x, float y, float Angle);
+float			raycasting(t_data *data, float ang, int *v_f);
+int				check_vr_hr(t_data *data, float x, float y, float Angle);
 
 #endif
