@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 21:17:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/07 17:17:53 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:27:45 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ typedef struct data
 	float		angle;
 	float		projection_plan;
 	float		flag;
+	float		deltax;
+	float		deltay;
+	float 		tmp_a;
+	float		tmp_b;
 	void		*mlx_tmp;
 	t_params	*params;
 }				t_data;

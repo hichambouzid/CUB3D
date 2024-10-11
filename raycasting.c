@@ -6,51 +6,51 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:19:15 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/10/11 15:24:32 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:35:34 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-float	raycasting(t_data *data, float ang, int *v_f)
+static void	deltas(float *delta_x, float *delta_y, float ang)
 {
-	float	tmp_a;
-	float	tmp_b;
-	int step_x, step_y;
-	float deltax, deltay;
-	float in_x, in_y;
-
-	tmp_a = (32 + (data->f * CUB_SIZE));
-	tmp_b = (32 + (data->z * CUB_SIZE));
 	if (cos(ang) == 0)
-		deltax = INFINITY;
+		*delta_x = INFINITY;
 	else
-		deltax = fabs(1 / cos(ang));
+		*delta_x = fabs(1 / cos(ang));
 	if (sin(ang) == 0)
-		deltay = INFINITY;
+		*delta_y = INFINITY;
 	else
-		deltay = fabs(1 / sin(ang));
+		*delta_y = fabs(1 / sin(ang));
+}
+
+static float	stepx(float ang, int *step, t_data *data, float delta)
+{
+	data->tmp_a = (32 + (data->f * CUB_SIZE));
 	if (cos(ang) < 0)
 	{
-		step_x = -1;
-		in_x = (tmp_a - floor(tmp_a)) * deltax;
+		*step = -1;
+		return ((data->tmp_a - floor(data->tmp_a)) * delta);
 	}
-	else
-	{
-		step_x = 1;
-		in_x = (ceil(tmp_a) - tmp_a) * deltax;
-	}
+	*step = 1;
+	return ((ceil(data->tmp_a) - data->tmp_a) * delta);
+}
+
+static float	stepy(float ang, int *step, t_data *data, float delta)
+{
+	data->tmp_b = (32 + (data->z * CUB_SIZE));
 	if (sin(ang) < 0)
 	{
-		step_y = -1;
-		in_y = (tmp_b - floor(tmp_b)) * deltay;
+		*step = -1;
+		return ((data->tmp_b - floor(data->tmp_b)) * delta);
 	}
-	else
-	{
-		step_y = 1;
-		in_y = (ceil(tmp_b) - tmp_b) * deltay;
-	}
-	while ((int)floor(tmp_b / CUB_SIZE) > 0 && (int)floor(tmp_a / CUB_SIZE) > 0
+	*step = 1;
+	return ((ceil(data->tmp_b) - data->tmp_b) * delta);
+}
+
+static int	should_stop(float tmp_a, float tmp_b, t_data *data)
+{
+	if ((int)floor(tmp_b / CUB_SIZE) > 0 && (int)floor(tmp_a / CUB_SIZE) > 0
 		&& (int)floor(tmp_a
 			/ CUB_SIZE) < (int)ft_strlen(data->map[(int)floor(tmp_b
 				/ CUB_SIZE)]) && (int)floor(tmp_b
@@ -58,38 +58,53 @@ float	raycasting(t_data *data, float ang, int *v_f)
 				/ CUB_SIZE)][(int)floor(tmp_a / CUB_SIZE)] != '1'
 			&& data->map[(int)floor(tmp_b / CUB_SIZE)][(int)floor(tmp_a
 				/ CUB_SIZE)] != ' '))
+		return (1);
+	return (0);
+}
+
+float	raycasting(t_data *data, float ang, int *v_f)
+{
+	int		step_y;
+	int		step_x;
+	float	in_x;
+	float	in_y;
+
+	deltas(&data->deltax, &data->deltay, ang);
+	in_x = stepx(ang, &step_x, data, data->deltax);
+	in_y = stepy(ang, &step_y, data, data->deltay);
+	while (should_stop(data->tmp_a, data->tmp_b, data))
 	{
 		if (in_x < in_y)
 		{
-			in_x += deltax;
-			tmp_a += step_x;
+			in_x += data->deltax;
+			data->tmp_a += step_x;
 			if (step_x == 1)
 			{
-				data->params->texture_offset = fmod(tmp_b, CUB_SIZE);
+				data->params->texture_offset = fmod(data->tmp_b, CUB_SIZE);
 				*v_f = 1;
 			}
 			else
 			{
-				data->params->texture_offset = fmod(tmp_b, CUB_SIZE);
+				data->params->texture_offset = fmod(data->tmp_b, CUB_SIZE);
 				*v_f = 2;
 			}
 		}
 		else
 		{
-			in_y += deltay;
-			tmp_b += step_y;
+			in_y += data->deltay;
+			data->tmp_b += step_y;
 			if (step_y == 1)
 			{
-				data->params->texture_offset = fmod(tmp_a, CUB_SIZE);
+				data->params->texture_offset = fmod(data->tmp_a, CUB_SIZE);
 				*v_f = 3;
 			}
 			else
 			{
-				data->params->texture_offset = fmod(tmp_a, CUB_SIZE);
+				data->params->texture_offset = fmod(data->tmp_a, CUB_SIZE);
 				*v_f = 4;
 			}
 		}
 	}
-	return (sqrt(powf(tmp_a - (32 + (data->f * CUB_SIZE)), 2) +
-		powf(tmp_b - (32 + (data->z * CUB_SIZE)), 2)));
+	return (sqrt(powf(data->tmp_a - (32 + (data->f * CUB_SIZE)), 2)
+			+ powf(data->tmp_b - (32 + (data->z * CUB_SIZE)), 2)));
 }
