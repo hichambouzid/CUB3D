@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 12:22:51 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/02 10:38:38 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:15:42 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,22 @@ int	ft_close(int key)
 	return (1);
 }
 
+static void	destroy(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->mlx_3d);
+	mlx_destroy_image(data->mlx, data->params->northh);
+	mlx_destroy_image(data->mlx, data->params->eastt);
+	mlx_destroy_image(data->mlx, data->params->westt);
+	mlx_destroy_image(data->mlx, data->params->southh);
+	mlx_destroy_window(data->mlx, data->mlx_win);
+}
+
 int	key_hook(int key, t_data *data)
 {
 	if (key == 65307)
 	{
 		ft_free_table(data->map);
-		mlx_destroy_image(data->mlx, data->mlx_3d);
-		mlx_destroy_image(data->mlx, data->params->northh);
-		mlx_destroy_image(data->mlx, data->params->eastt);
-		mlx_destroy_image(data->mlx, data->params->westt);
-		mlx_destroy_image(data->mlx, data->params->southh);
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		// free(data->params->southh);
-		// free(data->params->eastt);
-		// free(data->params->northh);
+		destroy(data);
 		free(data->params);
 		free(data);
 		exit(1);

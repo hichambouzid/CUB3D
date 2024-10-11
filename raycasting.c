@@ -6,27 +6,22 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:19:15 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/10/02 11:37:59 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:24:32 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
 #include "cub3D.h"
 
 float	raycasting(t_data *data, float ang, int *v_f)
 {
 	float	tmp_a;
 	float	tmp_b;
-	float	a;
-	float	b;
 	int step_x, step_y;
 	float deltax, deltay;
 	float in_x, in_y;
 
 	tmp_a = (32 + (data->f * CUB_SIZE));
 	tmp_b = (32 + (data->z * CUB_SIZE));
-	a = tmp_a;
-	b = tmp_b;
 	if (cos(ang) == 0)
 		deltax = INFINITY;
 	else
@@ -95,5 +90,6 @@ float	raycasting(t_data *data, float ang, int *v_f)
 			}
 		}
 	}
-	return (sqrtf(powf(tmp_a - a, 2) + powf(tmp_b - b, 2)));
+	return (sqrt(powf(tmp_a - (32 + (data->f * CUB_SIZE)), 2) +
+		powf(tmp_b - (32 + (data->z * CUB_SIZE)), 2)));
 }

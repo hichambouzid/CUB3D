@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 13:10:46 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/02 10:39:38 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:16:34 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	draw_walls(t_data *data, float height_wall, float x)
 		put_pixel_to_image1(data, x, start_y++, mlx_get_color(data, x_text,
 				CUB_SIZE * y_text++ / height_wall));
 }
+
 int	valid_texture(t_data *data, char **param, void **img)
 {
 	int	c;
@@ -87,7 +88,6 @@ int	valid_texture(t_data *data, char **param, void **img)
 	int	bpp;
 	int	endian;
 
-	// void	*img;
 	c = 0;
 	v = 0;
 	*img = mlx_xpm_file_to_image(data->mlx, *param, &c, &v);

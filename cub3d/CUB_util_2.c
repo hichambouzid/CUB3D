@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 22:14:26 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/09/07 18:37:01 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:16:54 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	draw_fake_3d(t_data *data, float hit, float x)
 
 	i = 0;
 	height_wall = (CUB_SIZE / hit) * data->projection_plan;
-	// printf("%f\n", height_wl);
 	draw_ceiling(data, hit, x);
 	draw_walls(data, height_wall, x);
 	if (x == WIDTH)
@@ -44,8 +43,6 @@ char	*get_appropriate_texture(t_data *data, float angle, int v_h)
 	(void)angle;
 	if (v_h == 1 || v_h == 3)
 	{
-		// if ((angle > 0 && angle < M_PI) || (angle > M_PI * 2 && angle < (400
-		// 			* M_PI / 180)))
 		if (v_h == 1)
 			return (data->params->north);
 		if (v_h == 3)
@@ -53,7 +50,6 @@ char	*get_appropriate_texture(t_data *data, float angle, int v_h)
 	}
 	if (v_h == 2 || v_h == 4)
 	{
-		// if ((angle > M_PI / 2 && angle < 3 * M_PI / 2))
 		if (v_h == 2)
 			return (data->params->east);
 		if (v_h == 4)
