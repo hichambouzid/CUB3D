@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 21:17:06 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/10/11 17:27:45 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 18:52:57 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct data
 	float		flag;
 	float		deltax;
 	float		deltay;
-	float 		tmp_a;
+	float		tmp_a;
 	float		tmp_b;
 	void		*mlx_tmp;
 	t_params	*params;
@@ -140,5 +140,6 @@ void			ft_free_map(t_data *data);
 int				valid_color_pre(char *p, int is_color);
 float			raycasting(t_data *data, float ang, int *v_f);
 int				check_vr_hr(t_data *data, float x, float y, float Angle);
+float			get_offset(t_data *data, int flag, int step, int *v_f);
 
 #endif

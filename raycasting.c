@@ -6,7 +6,7 @@
 /*   By: hibouzid <hibouzid@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 17:19:15 by hibouzid          #+#    #+#             */
-/*   Updated: 2024/10/11 17:35:34 by hibouzid         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:08:22 by hibouzid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static int	should_stop(float tmp_a, float tmp_b, t_data *data)
 	if ((int)floor(tmp_b / CUB_SIZE) > 0 && (int)floor(tmp_a / CUB_SIZE) > 0
 		&& (int)floor(tmp_a
 			/ CUB_SIZE) < (int)ft_strlen(data->map[(int)floor(tmp_b
-				/ CUB_SIZE)]) && (int)floor(tmp_b
+					/ CUB_SIZE)]) && (int)floor(tmp_b
 			/ CUB_SIZE) < ft_strleen(data->map) && (data->map[(int)floor(tmp_b
-				/ CUB_SIZE)][(int)floor(tmp_a / CUB_SIZE)] != '1'
-			&& data->map[(int)floor(tmp_b / CUB_SIZE)][(int)floor(tmp_a
-				/ CUB_SIZE)] != ' '))
+					/ CUB_SIZE)][(int)floor(tmp_a / CUB_SIZE)] != '1'
+		&& data->map[(int)floor(tmp_b / CUB_SIZE)][(int)floor(tmp_a
+			/ CUB_SIZE)] != ' '))
 		return (1);
 	return (0);
 }
@@ -78,31 +78,13 @@ float	raycasting(t_data *data, float ang, int *v_f)
 		{
 			in_x += data->deltax;
 			data->tmp_a += step_x;
-			if (step_x == 1)
-			{
-				data->params->texture_offset = fmod(data->tmp_b, CUB_SIZE);
-				*v_f = 1;
-			}
-			else
-			{
-				data->params->texture_offset = fmod(data->tmp_b, CUB_SIZE);
-				*v_f = 2;
-			}
+			data->params->texture_offset = get_offset(data, 1, step_x, v_f);
 		}
 		else
 		{
 			in_y += data->deltay;
 			data->tmp_b += step_y;
-			if (step_y == 1)
-			{
-				data->params->texture_offset = fmod(data->tmp_a, CUB_SIZE);
-				*v_f = 3;
-			}
-			else
-			{
-				data->params->texture_offset = fmod(data->tmp_a, CUB_SIZE);
-				*v_f = 4;
-			}
+			data->params->texture_offset = get_offset(data, 0, step_y, v_f);
 		}
 	}
 	return (sqrt(powf(data->tmp_a - (32 + (data->f * CUB_SIZE)), 2)
