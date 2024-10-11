@@ -108,7 +108,8 @@ int	valid_map_helper(t_data *data, int fd, int flag, int params)
 		else if (params == 6 && ft_strcmp(rline, "\n"))
 		{
 			flag = 1;
-			rline[ft_strlen(rline) - 1] = '\0';
+			if (rline[ft_strlen(rline) - 1] == '\n')
+				rline[ft_strlen(rline) - 1] = '\0';
 			data->map[i++] = ft_strdup(rline);
 		}
 		free(rline);
