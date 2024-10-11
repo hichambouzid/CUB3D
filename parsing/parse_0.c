@@ -12,7 +12,7 @@
 
 #include "./../cub3D.h"
 
-int	valid_param(char *p, t_params *params, int nparam)
+int	valid_param(char *p, t_params *params, int *nparam)
 {
 	char	**psp;
 	int		ret;
@@ -30,14 +30,14 @@ int	valid_param(char *p, t_params *params, int nparam)
 	else if (!ft_strcmp(psp[0], "EA") && !params->east)
 		ret = valid_param_helper(psp[1], &params->east, NULL, 0);
 	else if (!ft_strcmp(psp[0], "F") && params->floor == -1)
-		ret = valid_param_helper(psp[1], NULL, &params->floor, nparam);
+		ret = valid_param_helper(psp[1], NULL, &params->floor, *nparam);
 	else if (!ft_strcmp(psp[0], "C") && params->ceiling == -1)
-		ret = valid_param_helper(psp[1], NULL, &params->ceiling, nparam);
+		ret = valid_param_helper(psp[1], NULL, &params->ceiling, *nparam);
 	else
 		return (ft_free_table(psp), 0);
 	if (!ret)
 		return (ft_free_table(psp), 0);
-	return (ft_free_table(psp), 1);
+	return (ft_free_table(psp), (*nparam)++, 1);
 }
 
 int	valid_map_components_helper(char **map, int i, int j)
@@ -101,9 +101,8 @@ int	valid_map_helper(t_data *data, int fd, int flag, int params)
 			return (free(rline), 0);
 		else if (ft_strcmp(rline, "\n") && !flag && params != 6)
 		{
-			if (!valid_param(rline, data->params, params))
+			if (!valid_param(rline, data->params, &params))
 				return (free(rline), 0);
-			(params)++;
 		}
 		else if (params == 6 && ft_strcmp(rline, "\n"))
 		{
